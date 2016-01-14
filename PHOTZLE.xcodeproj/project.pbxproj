@@ -1,0 +1,469 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CE1758C31C47A42A006CFBD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758C21C47A42A006CFBD9 /* main.m */; };
+		CE1758C61C47A42A006CFBD9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758C51C47A42A006CFBD9 /* AppDelegate.m */; };
+		CE1758C91C47A42A006CFBD9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758C81C47A42A006CFBD9 /* ViewController.m */; };
+		CE1758CC1C47A42A006CFBD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1758CA1C47A42A006CFBD9 /* Main.storyboard */; };
+		CE1758CE1C47A42A006CFBD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE1758CD1C47A42A006CFBD9 /* Assets.xcassets */; };
+		CE1758D11C47A42A006CFBD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1758CF1C47A42A006CFBD9 /* LaunchScreen.storyboard */; };
+		CE1758EC1C47A61F006CFBD9 /* BMAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758DC1C47A61F006CFBD9 /* BMAboutViewController.m */; };
+		CE1758ED1C47A61F006CFBD9 /* BMFloatingMenuPopperView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758DF1C47A61F006CFBD9 /* BMFloatingMenuPopperView.m */; };
+		CE1758EE1C47A61F006CFBD9 /* BMPopUpMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758E11C47A61F006CFBD9 /* BMPopUpMenuView.m */; };
+		CE1758EF1C47A61F006CFBD9 /* BMPuzzleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758E31C47A61F006CFBD9 /* BMPuzzleViewController.m */; };
+		CE1758F01C47A61F006CFBD9 /* BMStartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758E61C47A61F006CFBD9 /* BMStartViewController.m */; };
+		CE1758F11C47A61F006CFBD9 /* BMButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758E91C47A61F006CFBD9 /* BMButton.m */; };
+		CE1758F21C47A61F006CFBD9 /* BMImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758EB1C47A61F006CFBD9 /* BMImageView.m */; };
+		CE1758F81C47A65D006CFBD9 /* BMDifficultyLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758F51C47A65D006CFBD9 /* BMDifficultyLevel.m */; };
+		CE1758F91C47A65D006CFBD9 /* BMImageWithIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758F71C47A65D006CFBD9 /* BMImageWithIndex.m */; };
+		CE1759011C47A6C5006CFBD9 /* NSMutableArray+Shuffling.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758FC1C47A6C5006CFBD9 /* NSMutableArray+Shuffling.m */; };
+		CE1759021C47A6C5006CFBD9 /* UIFont+defaultFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758FE1C47A6C5006CFBD9 /* UIFont+defaultFonts.m */; };
+		CE1759031C47A6C5006CFBD9 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1759001C47A6C5006CFBD9 /* UIImage+Resize.m */; };
+		CEABA6B21C47D08200F8FAB7 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEABA6B11C47D08200F8FAB7 /* FBSDKCoreKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CE1758BE1C47A42A006CFBD9 /* PHOTZLE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PHOTZLE.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE1758C21C47A42A006CFBD9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CE1758C41C47A42A006CFBD9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CE1758C51C47A42A006CFBD9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CE1758C71C47A42A006CFBD9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		CE1758C81C47A42A006CFBD9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CE1758CB1C47A42A006CFBD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CE1758CD1C47A42A006CFBD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CE1758D01C47A42A006CFBD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CE1758D21C47A42A006CFBD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE1758DB1C47A61F006CFBD9 /* BMAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMAboutViewController.h; sourceTree = "<group>"; };
+		CE1758DC1C47A61F006CFBD9 /* BMAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMAboutViewController.m; sourceTree = "<group>"; };
+		CE1758DE1C47A61F006CFBD9 /* BMFloatingMenuPopperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMFloatingMenuPopperView.h; sourceTree = "<group>"; };
+		CE1758DF1C47A61F006CFBD9 /* BMFloatingMenuPopperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMFloatingMenuPopperView.m; sourceTree = "<group>"; };
+		CE1758E01C47A61F006CFBD9 /* BMPopUpMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMPopUpMenuView.h; sourceTree = "<group>"; };
+		CE1758E11C47A61F006CFBD9 /* BMPopUpMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMPopUpMenuView.m; sourceTree = "<group>"; };
+		CE1758E21C47A61F006CFBD9 /* BMPuzzleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMPuzzleViewController.h; sourceTree = "<group>"; };
+		CE1758E31C47A61F006CFBD9 /* BMPuzzleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMPuzzleViewController.m; sourceTree = "<group>"; };
+		CE1758E51C47A61F006CFBD9 /* BMStartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMStartViewController.h; sourceTree = "<group>"; };
+		CE1758E61C47A61F006CFBD9 /* BMStartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMStartViewController.m; sourceTree = "<group>"; };
+		CE1758E81C47A61F006CFBD9 /* BMButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMButton.h; sourceTree = "<group>"; };
+		CE1758E91C47A61F006CFBD9 /* BMButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMButton.m; sourceTree = "<group>"; };
+		CE1758EA1C47A61F006CFBD9 /* BMImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMImageView.h; sourceTree = "<group>"; };
+		CE1758EB1C47A61F006CFBD9 /* BMImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMImageView.m; sourceTree = "<group>"; };
+		CE1758F41C47A65D006CFBD9 /* BMDifficultyLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMDifficultyLevel.h; sourceTree = "<group>"; };
+		CE1758F51C47A65D006CFBD9 /* BMDifficultyLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMDifficultyLevel.m; sourceTree = "<group>"; };
+		CE1758F61C47A65D006CFBD9 /* BMImageWithIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMImageWithIndex.h; sourceTree = "<group>"; };
+		CE1758F71C47A65D006CFBD9 /* BMImageWithIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMImageWithIndex.m; sourceTree = "<group>"; };
+		CE1758FB1C47A6C5006CFBD9 /* NSMutableArray+Shuffling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Shuffling.h"; sourceTree = "<group>"; };
+		CE1758FC1C47A6C5006CFBD9 /* NSMutableArray+Shuffling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Shuffling.m"; sourceTree = "<group>"; };
+		CE1758FD1C47A6C5006CFBD9 /* UIFont+defaultFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+defaultFonts.h"; sourceTree = "<group>"; };
+		CE1758FE1C47A6C5006CFBD9 /* UIFont+defaultFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+defaultFonts.m"; sourceTree = "<group>"; };
+		CE1758FF1C47A6C5006CFBD9 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
+		CE1759001C47A6C5006CFBD9 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		CEABA6B11C47D08200F8FAB7 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CE1758BB1C47A42A006CFBD9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CEABA6B21C47D08200F8FAB7 /* FBSDKCoreKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CE1758B51C47A42A006CFBD9 = {
+			isa = PBXGroup;
+			children = (
+				CEABA6B01C47D05200F8FAB7 /* Frameworks */,
+				CE1758C01C47A42A006CFBD9 /* PHOTZLE */,
+				CE1758BF1C47A42A006CFBD9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CE1758BF1C47A42A006CFBD9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE1758BE1C47A42A006CFBD9 /* PHOTZLE.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CE1758C01C47A42A006CFBD9 /* PHOTZLE */ = {
+			isa = PBXGroup;
+			children = (
+				CE1758D81C47A5E2006CFBD9 /* Source */,
+				CE1758C41C47A42A006CFBD9 /* AppDelegate.h */,
+				CE1758C51C47A42A006CFBD9 /* AppDelegate.m */,
+				CE1758C71C47A42A006CFBD9 /* ViewController.h */,
+				CE1758C81C47A42A006CFBD9 /* ViewController.m */,
+				CE1758CA1C47A42A006CFBD9 /* Main.storyboard */,
+				CE1758CD1C47A42A006CFBD9 /* Assets.xcassets */,
+				CE1758CF1C47A42A006CFBD9 /* LaunchScreen.storyboard */,
+				CE1758D21C47A42A006CFBD9 /* Info.plist */,
+				CE1758C11C47A42A006CFBD9 /* Supporting Files */,
+			);
+			path = PHOTZLE;
+			sourceTree = "<group>";
+		};
+		CE1758C11C47A42A006CFBD9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CE1758C21C47A42A006CFBD9 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CE1758D81C47A5E2006CFBD9 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				CE1758FA1C47A6C5006CFBD9 /* Categories */,
+				CE1758F31C47A65D006CFBD9 /* Model */,
+				CE1758D91C47A5FA006CFBD9 /* UI */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		CE1758D91C47A5FA006CFBD9 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CE1758DA1C47A61F006CFBD9 /* AboutViewController */,
+				CE1758DD1C47A61F006CFBD9 /* BMPuzzleViewController */,
+				CE1758E41C47A61F006CFBD9 /* BMStartViewController */,
+				CE1758E71C47A61F006CFBD9 /* Common */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		CE1758DA1C47A61F006CFBD9 /* AboutViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CE1758DB1C47A61F006CFBD9 /* BMAboutViewController.h */,
+				CE1758DC1C47A61F006CFBD9 /* BMAboutViewController.m */,
+			);
+			path = AboutViewController;
+			sourceTree = "<group>";
+		};
+		CE1758DD1C47A61F006CFBD9 /* BMPuzzleViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CE1758DE1C47A61F006CFBD9 /* BMFloatingMenuPopperView.h */,
+				CE1758DF1C47A61F006CFBD9 /* BMFloatingMenuPopperView.m */,
+				CE1758E01C47A61F006CFBD9 /* BMPopUpMenuView.h */,
+				CE1758E11C47A61F006CFBD9 /* BMPopUpMenuView.m */,
+				CE1758E21C47A61F006CFBD9 /* BMPuzzleViewController.h */,
+				CE1758E31C47A61F006CFBD9 /* BMPuzzleViewController.m */,
+			);
+			path = BMPuzzleViewController;
+			sourceTree = "<group>";
+		};
+		CE1758E41C47A61F006CFBD9 /* BMStartViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CE1758E51C47A61F006CFBD9 /* BMStartViewController.h */,
+				CE1758E61C47A61F006CFBD9 /* BMStartViewController.m */,
+			);
+			path = BMStartViewController;
+			sourceTree = "<group>";
+		};
+		CE1758E71C47A61F006CFBD9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CE1758E81C47A61F006CFBD9 /* BMButton.h */,
+				CE1758E91C47A61F006CFBD9 /* BMButton.m */,
+				CE1758EA1C47A61F006CFBD9 /* BMImageView.h */,
+				CE1758EB1C47A61F006CFBD9 /* BMImageView.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		CE1758F31C47A65D006CFBD9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE1758F41C47A65D006CFBD9 /* BMDifficultyLevel.h */,
+				CE1758F51C47A65D006CFBD9 /* BMDifficultyLevel.m */,
+				CE1758F61C47A65D006CFBD9 /* BMImageWithIndex.h */,
+				CE1758F71C47A65D006CFBD9 /* BMImageWithIndex.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE1758FA1C47A6C5006CFBD9 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				CE1758FB1C47A6C5006CFBD9 /* NSMutableArray+Shuffling.h */,
+				CE1758FC1C47A6C5006CFBD9 /* NSMutableArray+Shuffling.m */,
+				CE1758FD1C47A6C5006CFBD9 /* UIFont+defaultFonts.h */,
+				CE1758FE1C47A6C5006CFBD9 /* UIFont+defaultFonts.m */,
+				CE1758FF1C47A6C5006CFBD9 /* UIImage+Resize.h */,
+				CE1759001C47A6C5006CFBD9 /* UIImage+Resize.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		CEABA6B01C47D05200F8FAB7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CEABA6B11C47D08200F8FAB7 /* FBSDKCoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CE1758BD1C47A42A006CFBD9 /* PHOTZLE */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE1758D51C47A42A006CFBD9 /* Build configuration list for PBXNativeTarget "PHOTZLE" */;
+			buildPhases = (
+				CE1758BA1C47A42A006CFBD9 /* Sources */,
+				CE1758BB1C47A42A006CFBD9 /* Frameworks */,
+				CE1758BC1C47A42A006CFBD9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PHOTZLE;
+			productName = PHOTZLE;
+			productReference = CE1758BE1C47A42A006CFBD9 /* PHOTZLE.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CE1758B61C47A42A006CFBD9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Bavarskis Media";
+				TargetAttributes = {
+					CE1758BD1C47A42A006CFBD9 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 2R9LLP3W6S;
+					};
+				};
+			};
+			buildConfigurationList = CE1758B91C47A42A006CFBD9 /* Build configuration list for PBXProject "PHOTZLE" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CE1758B51C47A42A006CFBD9;
+			productRefGroup = CE1758BF1C47A42A006CFBD9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CE1758BD1C47A42A006CFBD9 /* PHOTZLE */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CE1758BC1C47A42A006CFBD9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE1758D11C47A42A006CFBD9 /* LaunchScreen.storyboard in Resources */,
+				CE1758CE1C47A42A006CFBD9 /* Assets.xcassets in Resources */,
+				CE1758CC1C47A42A006CFBD9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CE1758BA1C47A42A006CFBD9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE1758C91C47A42A006CFBD9 /* ViewController.m in Sources */,
+				CE1758EF1C47A61F006CFBD9 /* BMPuzzleViewController.m in Sources */,
+				CE1758C61C47A42A006CFBD9 /* AppDelegate.m in Sources */,
+				CE1758F91C47A65D006CFBD9 /* BMImageWithIndex.m in Sources */,
+				CE1758F81C47A65D006CFBD9 /* BMDifficultyLevel.m in Sources */,
+				CE1759011C47A6C5006CFBD9 /* NSMutableArray+Shuffling.m in Sources */,
+				CE1758ED1C47A61F006CFBD9 /* BMFloatingMenuPopperView.m in Sources */,
+				CE1759021C47A6C5006CFBD9 /* UIFont+defaultFonts.m in Sources */,
+				CE1758F11C47A61F006CFBD9 /* BMButton.m in Sources */,
+				CE1758C31C47A42A006CFBD9 /* main.m in Sources */,
+				CE1758EC1C47A61F006CFBD9 /* BMAboutViewController.m in Sources */,
+				CE1758F01C47A61F006CFBD9 /* BMStartViewController.m in Sources */,
+				CE1758EE1C47A61F006CFBD9 /* BMPopUpMenuView.m in Sources */,
+				CE1758F21C47A61F006CFBD9 /* BMImageView.m in Sources */,
+				CE1759031C47A6C5006CFBD9 /* UIImage+Resize.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CE1758CA1C47A42A006CFBD9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE1758CB1C47A42A006CFBD9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CE1758CF1C47A42A006CFBD9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE1758D01C47A42A006CFBD9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CE1758D31C47A42A006CFBD9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CE1758D41C47A42A006CFBD9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CE1758D61C47A42A006CFBD9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = PHOTZLE/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bavarskismedia.PHOTZLE;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CE1758D71C47A42A006CFBD9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = PHOTZLE/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bavarskismedia.PHOTZLE;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CE1758B91C47A42A006CFBD9 /* Build configuration list for PBXProject "PHOTZLE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE1758D31C47A42A006CFBD9 /* Debug */,
+				CE1758D41C47A42A006CFBD9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE1758D51C47A42A006CFBD9 /* Build configuration list for PBXNativeTarget "PHOTZLE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE1758D61C47A42A006CFBD9 /* Debug */,
+				CE1758D71C47A42A006CFBD9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CE1758B61C47A42A006CFBD9 /* Project object */;
+}

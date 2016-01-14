@@ -22,8 +22,6 @@ NSString *const BMTakePicureButtonLabelText = @"Camera";
 NSString *const BMLevelButtonLabelText = @"Level";
 
 
-//@class BMPuzzleViewController;
-
 @interface BMStartViewController () <BMPuzzleViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UIButton *choosePictureButton;
@@ -73,14 +71,6 @@ NSString *const BMLevelButtonLabelText = @"Level";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-    
-    UIImage *welcomeImage = [UIImage imageNamed:@"welcome.png"];
-    UIImageView *welcomeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, welcomeImage.size.width, welcomeImage.size.height)];
-    welcomeImageView.image = welcomeImage;
-    [self.view addSubview:welcomeImageView];
-    
     
     UIImage *libraryButtonImageNormal = [UIImage imageNamed:@"Library_.png"];
     UIImage *cameraButtonImageNormal = [UIImage imageNamed:@"Camera_.png"];
@@ -136,9 +126,6 @@ NSString *const BMLevelButtonLabelText = @"Level";
     else {
         [_levelButton setBackgroundImage:_level1ButtonImageNormal forState:UIControlStateNormal];
     }
-    
-
-    [_levelButton setFrame:CGRectMake(_takePictureButton.frame.origin.x + _takePictureButton.frame.size.width + BMStartScreenMenuButtonsHorizontalSpacing, _takePictureButton.frame.origin.y, _levelButton.frame.size.width, _levelButton.frame.size.height)];
     
     
     _levelLabel.font = [UIFont defaultBoldFontWithSize:12];
@@ -222,7 +209,6 @@ NSString *const BMLevelButtonLabelText = @"Level";
         default:
             break;
     }
-
 
 }
 

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BMPuzzleViewController">
+            <connections>
+                <outlet property="collectionView" destination="tIS-Xj-Zz5" id="eCW-er-J0H"/>
+                <outlet property="view" destination="iN0-l3-epB" id="jvS-uJ-xfO"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="277" height="394"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="tIS-Xj-Zz5">
+                    <rect key="frame" x="0.0" y="0.0" width="277" height="394"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FR0-O7-gPk">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="tIS-Xj-Zz5" secondAttribute="trailing" id="4HI-LY-KpH"/>
+                <constraint firstItem="tIS-Xj-Zz5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="74N-X2-Q5H"/>
+                <constraint firstAttribute="bottom" secondItem="tIS-Xj-Zz5" secondAttribute="bottom" id="ZAS-5r-3wV"/>
+                <constraint firstItem="tIS-Xj-Zz5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ecy-yn-BEy"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-314.5" y="180"/>
+        </view>
+    </objects>
+</document>

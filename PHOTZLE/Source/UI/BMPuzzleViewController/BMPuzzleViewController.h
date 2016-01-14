@@ -20,6 +20,8 @@
 
 @interface BMPuzzleViewController : UIViewController
 
+- (id)initWithDifficultyLevel:(BMDifficultyLevel *)level;
+
 @property (nonatomic, weak) id <BMPuzzleViewControllerDelegate> delegate;
 @property (nonatomic, strong) UIImage *puzzleImage;
 @property (nonatomic, strong) BMDifficultyLevel *level;

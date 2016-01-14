@@ -58,19 +58,13 @@ NSString *const BMLevelButtonLabelText = @"Level";
     return self;
 }
 
-- (void)loadView
-{
-    [super loadView];
-    
-    self.difficultyLevel = [[BMDifficultyLevel alloc] init];
-    [_difficultyLevel setLevelWithType:BMDifficultyLevelTypeBeginner];
-    
-}
-
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.difficultyLevel = [[BMDifficultyLevel alloc] init];
+    [_difficultyLevel setLevelWithType:BMDifficultyLevelTypeBeginner];
     
     UIImage *libraryButtonImageNormal = [UIImage imageNamed:@"Library_.png"];
     UIImage *cameraButtonImageNormal = [UIImage imageNamed:@"Camera_.png"];
@@ -136,25 +130,9 @@ NSString *const BMLevelButtonLabelText = @"Level";
     
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (BOOL)shouldAutorotate
 {
-    return NO;
-}
-
--(NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskPortrait;
-}
-
-- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
-{
-    return UIInterfaceOrientationPortrait;
+    return YES;
 }
 
 
@@ -217,9 +195,8 @@ NSString *const BMLevelButtonLabelText = @"Level";
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    BMPuzzleViewController *puzzleViewController = [[BMPuzzleViewController alloc] init];
+    BMPuzzleViewController *puzzleViewController = [[BMPuzzleViewController alloc] initWithDifficultyLevel:_difficultyLevel];
     puzzleViewController.delegate = self;
-    puzzleViewController.level = _difficultyLevel;
     
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     

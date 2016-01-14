@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8659E7CA1C481274002CD92E /* BMPuzzleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8659E7C91C481274002CD92E /* BMPuzzleViewController.xib */; };
 		CE1758C31C47A42A006CFBD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758C21C47A42A006CFBD9 /* main.m */; };
 		CE1758C61C47A42A006CFBD9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758C51C47A42A006CFBD9 /* AppDelegate.m */; };
 		CE1758C91C47A42A006CFBD9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758C81C47A42A006CFBD9 /* ViewController.m */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8659E7C91C481274002CD92E /* BMPuzzleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BMPuzzleViewController.xib; sourceTree = "<group>"; };
 		CE1758BE1C47A42A006CFBD9 /* PHOTZLE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PHOTZLE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1758C21C47A42A006CFBD9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CE1758C41C47A42A006CFBD9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				CE1758E11C47A61F006CFBD9 /* BMPopUpMenuView.m */,
 				CE1758E21C47A61F006CFBD9 /* BMPuzzleViewController.h */,
 				CE1758E31C47A61F006CFBD9 /* BMPuzzleViewController.m */,
+				8659E7C91C481274002CD92E /* BMPuzzleViewController.xib */,
 			);
 			path = BMPuzzleViewController;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				CE1758CE1C47A42A006CFBD9 /* Assets.xcassets in Resources */,
 				CEABA6B41C47EBF300F8FAB7 /* BMStartViewController.xib in Resources */,
 				CE1758CC1C47A42A006CFBD9 /* Main.storyboard in Resources */,
+				8659E7CA1C481274002CD92E /* BMPuzzleViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

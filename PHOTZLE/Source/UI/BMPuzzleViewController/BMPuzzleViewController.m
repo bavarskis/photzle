@@ -22,6 +22,7 @@
 
 @interface BMPuzzleViewController () <UIScrollViewDelegate, BMImageViewDelegate, BMPopUpMenuViewDelegate, BMFloatingMenuPopperViewDelegate, BMAboutViewControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) BMPopUpMenuView *popUpMenuCongratulation;
@@ -63,6 +64,16 @@
     if (self) {
         // Custom initialization
         self.level = [[BMDifficultyLevel alloc] init];
+        self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    }
+    return self;
+}
+
+- (id)initWithDifficultyLevel:(BMDifficultyLevel *)level {
+    
+    self = [super initWithNibName:NSStringFromClass([BMPuzzleViewController class]) bundle:nil];
+    if (self) {
+        self.level = level;
         self.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     }
     return self;

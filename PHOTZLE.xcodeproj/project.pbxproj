@@ -26,6 +26,7 @@
 		CE1759021C47A6C5006CFBD9 /* UIFont+defaultFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758FE1C47A6C5006CFBD9 /* UIFont+defaultFonts.m */; };
 		CE1759031C47A6C5006CFBD9 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1759001C47A6C5006CFBD9 /* UIImage+Resize.m */; };
 		CEABA6B21C47D08200F8FAB7 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEABA6B11C47D08200F8FAB7 /* FBSDKCoreKit.framework */; };
+		CEABA6B41C47EBF300F8FAB7 /* BMStartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEABA6B31C47EBF300F8FAB7 /* BMStartViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		CE1758FF1C47A6C5006CFBD9 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
 		CE1759001C47A6C5006CFBD9 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		CEABA6B11C47D08200F8FAB7 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		CEABA6B31C47EBF300F8FAB7 /* BMStartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BMStartViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			children = (
 				CE1758E51C47A61F006CFBD9 /* BMStartViewController.h */,
 				CE1758E61C47A61F006CFBD9 /* BMStartViewController.m */,
+				CEABA6B31C47EBF300F8FAB7 /* BMStartViewController.xib */,
 			);
 			path = BMStartViewController;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 			files = (
 				CE1758D11C47A42A006CFBD9 /* LaunchScreen.storyboard in Resources */,
 				CE1758CE1C47A42A006CFBD9 /* Assets.xcassets in Resources */,
+				CEABA6B41C47EBF300F8FAB7 /* BMStartViewController.xib in Resources */,
 				CE1758CC1C47A42A006CFBD9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

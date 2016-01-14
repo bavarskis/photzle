@@ -26,11 +26,15 @@ NSString *const BMLevelButtonLabelText = @"Level";
 
 @interface BMStartViewController () <BMPuzzleViewControllerDelegate>
 
-@property (nonatomic, strong) UIView *bottomContainerView;
-@property (nonatomic, strong) UIButton *choosePictureButton;
-@property (nonatomic, strong) UILabel *orLabel;
-@property (nonatomic, strong) UIButton *takePictureButton;
-@property (nonatomic, strong) UIButton *levelButton;
+@property (nonatomic, weak) IBOutlet UIButton *choosePictureButton;
+@property (nonatomic, weak) IBOutlet UIButton *takePictureButton;
+@property (nonatomic, weak) IBOutlet UIButton *levelButton;
+
+@property (nonatomic, weak) IBOutlet UILabel *choosePictureLabel;
+@property (nonatomic, weak) IBOutlet UILabel *takePictureLabel;
+@property (nonatomic, weak) IBOutlet UILabel *levelLabel;
+
+
 @property (nonatomic, strong) BMDifficultyLevel *difficultyLevel;
 @property (nonatomic, strong) NSData *defaultsDataWithLevelObject;
 @property (nonatomic, strong) UIImage *level1ButtonImageNormal;
@@ -76,11 +80,6 @@ NSString *const BMLevelButtonLabelText = @"Level";
     UIImageView *welcomeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, welcomeImage.size.width, welcomeImage.size.height)];
     welcomeImageView.image = welcomeImage;
     [self.view addSubview:welcomeImageView];
-
-    
-    self.bottomContainerView = [[UIView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, 100)];
-    _bottomContainerView.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:_bottomContainerView];
     
     
     UIImage *libraryButtonImageNormal = [UIImage imageNamed:@"Library_.png"];
@@ -91,46 +90,27 @@ NSString *const BMLevelButtonLabelText = @"Level";
     self.level3ButtonImageNormal = [UIImage imageNamed:@"Level-3_.png"];
     
     
-    self.takePictureButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_takePictureButton addTarget:self action:@selector(showCamera) forControlEvents:UIControlEventTouchUpInside];
     [_takePictureButton setBackgroundImage:cameraButtonImageNormal forState:UIControlStateNormal];
-    [_takePictureButton sizeToFit];
-    _takePictureButton.center = _bottomContainerView.center;
-    [_bottomContainerView addSubview:_takePictureButton];
+
     
-    UILabel *takePictureLabel = [[UILabel alloc] init];
-    takePictureLabel.font = [UIFont defaultBoldFontWithSize:12];
-    takePictureLabel.textAlignment = NSTextAlignmentCenter;
-    takePictureLabel.textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bluepixels.png"]];
-    takePictureLabel.backgroundColor = [UIColor clearColor];
-    takePictureLabel.text = BMTakePicureButtonLabelText;
-    [takePictureLabel sizeToFit];
-    takePictureLabel.center = _takePictureButton.center;
-    takePictureLabel.frame = CGRectOffset(takePictureLabel.frame, 0, _takePictureButton.frame.size.height/2 + takePictureLabel.frame.size.height/2);
-    [_bottomContainerView addSubview:takePictureLabel];
+    _takePictureLabel.font = [UIFont defaultBoldFontWithSize:12];
+    _takePictureLabel.textAlignment = NSTextAlignmentCenter;
+    _takePictureLabel.textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bluepixels.png"]];
+    _takePictureLabel.backgroundColor = [UIColor clearColor];
+    _takePictureLabel.text = BMTakePicureButtonLabelText;
     
     
-    self.choosePictureButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_choosePictureButton addTarget:self action:@selector(showImagePicker) forControlEvents:UIControlEventTouchUpInside];
     [_choosePictureButton setBackgroundImage:libraryButtonImageNormal forState:UIControlStateNormal];
     
-    [_choosePictureButton sizeToFit];
-    [_choosePictureButton setFrame:CGRectMake(_takePictureButton.frame.origin.x - _choosePictureButton.frame.size.width - BMStartScreenMenuButtonsHorizontalSpacing, _takePictureButton.frame.origin.y, _choosePictureButton.frame.size.width, _choosePictureButton.frame.size.height)];
-    [_bottomContainerView addSubview:_choosePictureButton];
-    
-    UILabel *choosePictureLabel = [[UILabel alloc] init];
-    choosePictureLabel.font = [UIFont defaultBoldFontWithSize:12];
-    choosePictureLabel.textAlignment = NSTextAlignmentCenter;
-    choosePictureLabel.textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bluepixels.png"]];
-    choosePictureLabel.backgroundColor = [UIColor clearColor];
-    choosePictureLabel.text = BMChoosePicutreButtonLabelText;
-    [choosePictureLabel sizeToFit];
-    choosePictureLabel.center = _choosePictureButton.center;
-    choosePictureLabel.frame = CGRectOffset(choosePictureLabel.frame, 0, _choosePictureButton.frame.size.height/2 + choosePictureLabel.frame.size.height/2);
-    [_bottomContainerView addSubview:choosePictureLabel];
+    _choosePictureLabel.font = [UIFont defaultBoldFontWithSize:12];
+    _choosePictureLabel.textAlignment = NSTextAlignmentCenter;
+    _choosePictureLabel.textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bluepixels.png"]];
+    _choosePictureLabel.backgroundColor = [UIColor clearColor];
+    _choosePictureLabel.text = BMChoosePicutreButtonLabelText;
     
     
-    self.levelButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [_levelButton addTarget:self action:@selector(changeLevel) forControlEvents:UIControlEventTouchUpInside];
     
     NSUserDefaults *defaults = [[NSUserDefaults alloc] init];
@@ -158,24 +138,14 @@ NSString *const BMLevelButtonLabelText = @"Level";
     }
     
 
-    [_levelButton sizeToFit];
     [_levelButton setFrame:CGRectMake(_takePictureButton.frame.origin.x + _takePictureButton.frame.size.width + BMStartScreenMenuButtonsHorizontalSpacing, _takePictureButton.frame.origin.y, _levelButton.frame.size.width, _levelButton.frame.size.height)];
-    [_bottomContainerView addSubview:_levelButton];
     
-    CGRect bottomContainerViewRect = _bottomContainerView.frame;
-    bottomContainerViewRect.origin.y = self.view.frame.size.height - bottomContainerViewRect.size.height;
-    _bottomContainerView.frame = bottomContainerViewRect;
     
-    UILabel *levelLabel = [[UILabel alloc] init];
-    levelLabel.font = [UIFont defaultBoldFontWithSize:12];
-    levelLabel.textAlignment = NSTextAlignmentCenter;
-    levelLabel.textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bluepixels.png"]];
-    levelLabel.backgroundColor = [UIColor clearColor];
-    levelLabel.text = BMLevelButtonLabelText;
-    [levelLabel sizeToFit];
-    levelLabel.center = _levelButton.center;
-    levelLabel.frame = CGRectOffset(levelLabel.frame, 0, _levelButton.frame.size.height/2 + levelLabel.frame.size.height/2);
-    [_bottomContainerView addSubview:levelLabel];
+    _levelLabel.font = [UIFont defaultBoldFontWithSize:12];
+    _levelLabel.textAlignment = NSTextAlignmentCenter;
+    _levelLabel.textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bluepixels.png"]];
+    _levelLabel.backgroundColor = [UIColor clearColor];
+    _levelLabel.text = BMLevelButtonLabelText;
     
 }
 

@@ -7,7 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8659E7CA1C481274002CD92E /* BMPuzzleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8659E7C91C481274002CD92E /* BMPuzzleViewController.xib */; };
+		8659E7CF1C48DA1B002CD92E /* BMFloatingMenuPopperView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8659E7CC1C48DA1B002CD92E /* BMFloatingMenuPopperView.m */; };
+		8659E7D01C48DA1B002CD92E /* BMPopUpMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8659E7CE1C48DA1B002CD92E /* BMPopUpMenuView.m */; };
+		8659E7D41C48DA6B002CD92E /* BMPuzzleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8659E7D21C48DA6B002CD92E /* BMPuzzleViewController.m */; };
+		8659E7D51C48DA6B002CD92E /* BMPuzzleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8659E7D31C48DA6B002CD92E /* BMPuzzleViewController.xib */; };
+		8659E7D91C48DA9A002CD92E /* BMStartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8659E7D71C48DA9A002CD92E /* BMStartViewController.m */; };
+		8659E7DA1C48DA9A002CD92E /* BMStartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8659E7D81C48DA9A002CD92E /* BMStartViewController.xib */; };
+		8659E7E01C48DB70002CD92E /* BMPuzzleCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8659E7DF1C48DB70002CD92E /* BMPuzzleCollectionViewLayout.m */; };
+		8659E7E51C48DBA7002CD92E /* BMPuzzleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8659E7E31C48DBA7002CD92E /* BMPuzzleCollectionViewCell.m */; };
+		8659E7E61C48DBA7002CD92E /* BMPuzzleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8659E7E41C48DBA7002CD92E /* BMPuzzleCollectionViewCell.xib */; };
 		CE1758C31C47A42A006CFBD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758C21C47A42A006CFBD9 /* main.m */; };
 		CE1758C61C47A42A006CFBD9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758C51C47A42A006CFBD9 /* AppDelegate.m */; };
 		CE1758C91C47A42A006CFBD9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758C81C47A42A006CFBD9 /* ViewController.m */; };
@@ -15,10 +23,6 @@
 		CE1758CE1C47A42A006CFBD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE1758CD1C47A42A006CFBD9 /* Assets.xcassets */; };
 		CE1758D11C47A42A006CFBD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1758CF1C47A42A006CFBD9 /* LaunchScreen.storyboard */; };
 		CE1758EC1C47A61F006CFBD9 /* BMAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758DC1C47A61F006CFBD9 /* BMAboutViewController.m */; };
-		CE1758ED1C47A61F006CFBD9 /* BMFloatingMenuPopperView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758DF1C47A61F006CFBD9 /* BMFloatingMenuPopperView.m */; };
-		CE1758EE1C47A61F006CFBD9 /* BMPopUpMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758E11C47A61F006CFBD9 /* BMPopUpMenuView.m */; };
-		CE1758EF1C47A61F006CFBD9 /* BMPuzzleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758E31C47A61F006CFBD9 /* BMPuzzleViewController.m */; };
-		CE1758F01C47A61F006CFBD9 /* BMStartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758E61C47A61F006CFBD9 /* BMStartViewController.m */; };
 		CE1758F11C47A61F006CFBD9 /* BMButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758E91C47A61F006CFBD9 /* BMButton.m */; };
 		CE1758F21C47A61F006CFBD9 /* BMImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758EB1C47A61F006CFBD9 /* BMImageView.m */; };
 		CE1758F81C47A65D006CFBD9 /* BMDifficultyLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758F51C47A65D006CFBD9 /* BMDifficultyLevel.m */; };
@@ -27,11 +31,24 @@
 		CE1759021C47A6C5006CFBD9 /* UIFont+defaultFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758FE1C47A6C5006CFBD9 /* UIFont+defaultFonts.m */; };
 		CE1759031C47A6C5006CFBD9 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1759001C47A6C5006CFBD9 /* UIImage+Resize.m */; };
 		CEABA6B21C47D08200F8FAB7 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEABA6B11C47D08200F8FAB7 /* FBSDKCoreKit.framework */; };
-		CEABA6B41C47EBF300F8FAB7 /* BMStartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEABA6B31C47EBF300F8FAB7 /* BMStartViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8659E7C91C481274002CD92E /* BMPuzzleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BMPuzzleViewController.xib; sourceTree = "<group>"; };
+		8659E7CB1C48DA1B002CD92E /* BMFloatingMenuPopperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMFloatingMenuPopperView.h; sourceTree = "<group>"; };
+		8659E7CC1C48DA1B002CD92E /* BMFloatingMenuPopperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMFloatingMenuPopperView.m; sourceTree = "<group>"; };
+		8659E7CD1C48DA1B002CD92E /* BMPopUpMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMPopUpMenuView.h; sourceTree = "<group>"; };
+		8659E7CE1C48DA1B002CD92E /* BMPopUpMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMPopUpMenuView.m; sourceTree = "<group>"; };
+		8659E7D11C48DA6B002CD92E /* BMPuzzleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BMPuzzleViewController.h; path = PHOTZLE/Source/UI/PuzzleViewController/BMPuzzleViewController.h; sourceTree = SOURCE_ROOT; };
+		8659E7D21C48DA6B002CD92E /* BMPuzzleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BMPuzzleViewController.m; path = PHOTZLE/Source/UI/PuzzleViewController/BMPuzzleViewController.m; sourceTree = SOURCE_ROOT; };
+		8659E7D31C48DA6B002CD92E /* BMPuzzleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BMPuzzleViewController.xib; path = PHOTZLE/Source/UI/PuzzleViewController/BMPuzzleViewController.xib; sourceTree = SOURCE_ROOT; };
+		8659E7D61C48DA9A002CD92E /* BMStartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BMStartViewController.h; path = PHOTZLE/Source/UI/StartViewController/BMStartViewController.h; sourceTree = SOURCE_ROOT; };
+		8659E7D71C48DA9A002CD92E /* BMStartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BMStartViewController.m; path = PHOTZLE/Source/UI/StartViewController/BMStartViewController.m; sourceTree = SOURCE_ROOT; };
+		8659E7D81C48DA9A002CD92E /* BMStartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BMStartViewController.xib; path = PHOTZLE/Source/UI/StartViewController/BMStartViewController.xib; sourceTree = SOURCE_ROOT; };
+		8659E7DE1C48DB70002CD92E /* BMPuzzleCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMPuzzleCollectionViewLayout.h; sourceTree = "<group>"; };
+		8659E7DF1C48DB70002CD92E /* BMPuzzleCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMPuzzleCollectionViewLayout.m; sourceTree = "<group>"; };
+		8659E7E21C48DBA7002CD92E /* BMPuzzleCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMPuzzleCollectionViewCell.h; sourceTree = "<group>"; };
+		8659E7E31C48DBA7002CD92E /* BMPuzzleCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMPuzzleCollectionViewCell.m; sourceTree = "<group>"; };
+		8659E7E41C48DBA7002CD92E /* BMPuzzleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BMPuzzleCollectionViewCell.xib; sourceTree = "<group>"; };
 		CE1758BE1C47A42A006CFBD9 /* PHOTZLE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PHOTZLE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1758C21C47A42A006CFBD9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CE1758C41C47A42A006CFBD9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -44,14 +61,6 @@
 		CE1758D21C47A42A006CFBD9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE1758DB1C47A61F006CFBD9 /* BMAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMAboutViewController.h; sourceTree = "<group>"; };
 		CE1758DC1C47A61F006CFBD9 /* BMAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMAboutViewController.m; sourceTree = "<group>"; };
-		CE1758DE1C47A61F006CFBD9 /* BMFloatingMenuPopperView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMFloatingMenuPopperView.h; sourceTree = "<group>"; };
-		CE1758DF1C47A61F006CFBD9 /* BMFloatingMenuPopperView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMFloatingMenuPopperView.m; sourceTree = "<group>"; };
-		CE1758E01C47A61F006CFBD9 /* BMPopUpMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMPopUpMenuView.h; sourceTree = "<group>"; };
-		CE1758E11C47A61F006CFBD9 /* BMPopUpMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMPopUpMenuView.m; sourceTree = "<group>"; };
-		CE1758E21C47A61F006CFBD9 /* BMPuzzleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMPuzzleViewController.h; sourceTree = "<group>"; };
-		CE1758E31C47A61F006CFBD9 /* BMPuzzleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMPuzzleViewController.m; sourceTree = "<group>"; };
-		CE1758E51C47A61F006CFBD9 /* BMStartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMStartViewController.h; sourceTree = "<group>"; };
-		CE1758E61C47A61F006CFBD9 /* BMStartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMStartViewController.m; sourceTree = "<group>"; };
 		CE1758E81C47A61F006CFBD9 /* BMButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMButton.h; sourceTree = "<group>"; };
 		CE1758E91C47A61F006CFBD9 /* BMButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMButton.m; sourceTree = "<group>"; };
 		CE1758EA1C47A61F006CFBD9 /* BMImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMImageView.h; sourceTree = "<group>"; };
@@ -67,7 +76,6 @@
 		CE1758FF1C47A6C5006CFBD9 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
 		CE1759001C47A6C5006CFBD9 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
 		CEABA6B11C47D08200F8FAB7 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		CEABA6B31C47EBF300F8FAB7 /* BMStartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BMStartViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +90,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8659E7DD1C48DB2D002CD92E /* PuzzleCollectionViewLayout */ = {
+			isa = PBXGroup;
+			children = (
+				8659E7DE1C48DB70002CD92E /* BMPuzzleCollectionViewLayout.h */,
+				8659E7DF1C48DB70002CD92E /* BMPuzzleCollectionViewLayout.m */,
+			);
+			name = PuzzleCollectionViewLayout;
+			path = PHOTZLE/Source/UI/PuzzleViewController/PuzzleCollectionViewLayout;
+			sourceTree = SOURCE_ROOT;
+		};
+		8659E7E11C48DB7B002CD92E /* PuzzleCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				8659E7E21C48DBA7002CD92E /* BMPuzzleCollectionViewCell.h */,
+				8659E7E31C48DBA7002CD92E /* BMPuzzleCollectionViewCell.m */,
+				8659E7E41C48DBA7002CD92E /* BMPuzzleCollectionViewCell.xib */,
+			);
+			name = PuzzleCollectionViewCell;
+			path = PHOTZLE/Source/UI/PuzzleViewController/PuzzleCollectionViewCell;
+			sourceTree = SOURCE_ROOT;
+		};
 		CE1758B51C47A42A006CFBD9 = {
 			isa = PBXGroup;
 			children = (
@@ -138,8 +167,8 @@
 			isa = PBXGroup;
 			children = (
 				CE1758DA1C47A61F006CFBD9 /* AboutViewController */,
-				CE1758DD1C47A61F006CFBD9 /* BMPuzzleViewController */,
-				CE1758E41C47A61F006CFBD9 /* BMStartViewController */,
+				CE1758DD1C47A61F006CFBD9 /* PuzzleViewController */,
+				CE1758E41C47A61F006CFBD9 /* StartViewController */,
 				CE1758E71C47A61F006CFBD9 /* Common */,
 			);
 			path = UI;
@@ -154,33 +183,37 @@
 			path = AboutViewController;
 			sourceTree = "<group>";
 		};
-		CE1758DD1C47A61F006CFBD9 /* BMPuzzleViewController */ = {
+		CE1758DD1C47A61F006CFBD9 /* PuzzleViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CE1758DE1C47A61F006CFBD9 /* BMFloatingMenuPopperView.h */,
-				CE1758DF1C47A61F006CFBD9 /* BMFloatingMenuPopperView.m */,
-				CE1758E01C47A61F006CFBD9 /* BMPopUpMenuView.h */,
-				CE1758E11C47A61F006CFBD9 /* BMPopUpMenuView.m */,
-				CE1758E21C47A61F006CFBD9 /* BMPuzzleViewController.h */,
-				CE1758E31C47A61F006CFBD9 /* BMPuzzleViewController.m */,
-				8659E7C91C481274002CD92E /* BMPuzzleViewController.xib */,
+				8659E7E11C48DB7B002CD92E /* PuzzleCollectionViewCell */,
+				8659E7DD1C48DB2D002CD92E /* PuzzleCollectionViewLayout */,
+				8659E7D11C48DA6B002CD92E /* BMPuzzleViewController.h */,
+				8659E7D21C48DA6B002CD92E /* BMPuzzleViewController.m */,
+				8659E7D31C48DA6B002CD92E /* BMPuzzleViewController.xib */,
 			);
+			name = PuzzleViewController;
 			path = BMPuzzleViewController;
 			sourceTree = "<group>";
 		};
-		CE1758E41C47A61F006CFBD9 /* BMStartViewController */ = {
+		CE1758E41C47A61F006CFBD9 /* StartViewController */ = {
 			isa = PBXGroup;
 			children = (
-				CE1758E51C47A61F006CFBD9 /* BMStartViewController.h */,
-				CE1758E61C47A61F006CFBD9 /* BMStartViewController.m */,
-				CEABA6B31C47EBF300F8FAB7 /* BMStartViewController.xib */,
+				8659E7D61C48DA9A002CD92E /* BMStartViewController.h */,
+				8659E7D71C48DA9A002CD92E /* BMStartViewController.m */,
+				8659E7D81C48DA9A002CD92E /* BMStartViewController.xib */,
 			);
+			name = StartViewController;
 			path = BMStartViewController;
 			sourceTree = "<group>";
 		};
 		CE1758E71C47A61F006CFBD9 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				8659E7CB1C48DA1B002CD92E /* BMFloatingMenuPopperView.h */,
+				8659E7CC1C48DA1B002CD92E /* BMFloatingMenuPopperView.m */,
+				8659E7CD1C48DA1B002CD92E /* BMPopUpMenuView.h */,
+				8659E7CE1C48DA1B002CD92E /* BMPopUpMenuView.m */,
 				CE1758E81C47A61F006CFBD9 /* BMButton.h */,
 				CE1758E91C47A61F006CFBD9 /* BMButton.m */,
 				CE1758EA1C47A61F006CFBD9 /* BMImageView.h */,
@@ -279,11 +312,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8659E7DA1C48DA9A002CD92E /* BMStartViewController.xib in Resources */,
 				CE1758D11C47A42A006CFBD9 /* LaunchScreen.storyboard in Resources */,
 				CE1758CE1C47A42A006CFBD9 /* Assets.xcassets in Resources */,
-				CEABA6B41C47EBF300F8FAB7 /* BMStartViewController.xib in Resources */,
+				8659E7E61C48DBA7002CD92E /* BMPuzzleCollectionViewCell.xib in Resources */,
 				CE1758CC1C47A42A006CFBD9 /* Main.storyboard in Resources */,
-				8659E7CA1C481274002CD92E /* BMPuzzleViewController.xib in Resources */,
+				8659E7D51C48DA6B002CD92E /* BMPuzzleViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,18 +329,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE1758C91C47A42A006CFBD9 /* ViewController.m in Sources */,
-				CE1758EF1C47A61F006CFBD9 /* BMPuzzleViewController.m in Sources */,
+				8659E7D41C48DA6B002CD92E /* BMPuzzleViewController.m in Sources */,
 				CE1758C61C47A42A006CFBD9 /* AppDelegate.m in Sources */,
 				CE1758F91C47A65D006CFBD9 /* BMImageWithIndex.m in Sources */,
 				CE1758F81C47A65D006CFBD9 /* BMDifficultyLevel.m in Sources */,
 				CE1759011C47A6C5006CFBD9 /* NSMutableArray+Shuffling.m in Sources */,
-				CE1758ED1C47A61F006CFBD9 /* BMFloatingMenuPopperView.m in Sources */,
+				8659E7CF1C48DA1B002CD92E /* BMFloatingMenuPopperView.m in Sources */,
+				8659E7E01C48DB70002CD92E /* BMPuzzleCollectionViewLayout.m in Sources */,
+				8659E7D91C48DA9A002CD92E /* BMStartViewController.m in Sources */,
 				CE1759021C47A6C5006CFBD9 /* UIFont+defaultFonts.m in Sources */,
 				CE1758F11C47A61F006CFBD9 /* BMButton.m in Sources */,
+				8659E7E51C48DBA7002CD92E /* BMPuzzleCollectionViewCell.m in Sources */,
 				CE1758C31C47A42A006CFBD9 /* main.m in Sources */,
 				CE1758EC1C47A61F006CFBD9 /* BMAboutViewController.m in Sources */,
-				CE1758F01C47A61F006CFBD9 /* BMStartViewController.m in Sources */,
-				CE1758EE1C47A61F006CFBD9 /* BMPopUpMenuView.m in Sources */,
+				8659E7D01C48DA1B002CD92E /* BMPopUpMenuView.m in Sources */,
 				CE1758F21C47A61F006CFBD9 /* BMImageView.m in Sources */,
 				CE1759031C47A6C5006CFBD9 /* UIImage+Resize.m in Sources */,
 			);

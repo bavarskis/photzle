@@ -24,6 +24,10 @@
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="F4d-Fd-R3c"/>
+                        <outlet property="delegate" destination="-1" id="d0v-Jl-pXQ"/>
+                    </connections>
                 </collectionView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -34,7 +38,7 @@
                 <constraint firstItem="tIS-Xj-Zz5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ecy-yn-BEy"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-314.5" y="180"/>
+            <point key="canvasLocation" x="-306.5" y="54"/>
         </view>
     </objects>
 </document>

@@ -17,14 +17,14 @@
 #import <QuartzCore/CATransform3D.h>
 #import <QuartzCore/CALayer.h>
 #import "BMAboutViewController.h"
+#import "BMPuzzleCollectionViewCell.h"
 
-
+NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerCellIdentifier";
 
 @interface BMPuzzleViewController () <UIScrollViewDelegate, BMImageViewDelegate, BMPopUpMenuViewDelegate, BMFloatingMenuPopperViewDelegate, BMAboutViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) UIScrollView *scrollView;
-@property (nonatomic, strong) UIView *containerView;
 @property (nonatomic, strong) BMPopUpMenuView *popUpMenuCongratulation;
 @property (nonatomic, strong) BMPopUpMenuView *popUpMenuRegular;
 @property (nonatomic, strong) BMFloatingMenuPopperView *menuPopperView;
@@ -89,6 +89,8 @@
 {
     [super viewDidLoad];
     
+    [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([BMPuzzleCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:BMPuzzleViewControllerCellIdentifier];
+    
     self.view.backgroundColor = [UIColor clearColor];
     
     _statusBarHidden = YES;
@@ -133,23 +135,7 @@
     
     containerViewRect.origin.y = (self.scrollView.bounds.size.height - containerViewRect.size.height) / 2;
     
-    self.containerView  = [[UIView alloc] initWithFrame:containerViewRect];
-    _containerView.backgroundColor = [UIColor whiteColor];
-    //_containerView.layer.borderColor = [UIColor blackColor].CGColor;
-    //_containerView.layer.borderWidth = 1;
-    _containerView.clipsToBounds = NO;
     
-    [_scrollView addSubview:_containerView];
-    
-    [self createGridInSuperview:_containerView];
-    
-    
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -207,10 +193,6 @@
         containerViewRect = CGRectMake(0, 0, containerViewRect.size.width, _puzzleImage.size.height * containerViewRect.size.width / _puzzleImage.size.width);
     }
     
-    _containerView.frame = containerViewRect;
-    _containerView.center = _scrollView.center;
-    _scrollView.contentSize = _containerView.frame.size;
-    
     
     if (_popUpMenuCongratulation) {
         _popUpMenuCongratulation.center = _scrollView.center;
@@ -224,7 +206,7 @@
         _menuPopperView.frame = CGRectMake(20, 20, _menuPopperView.frame.size.width, _menuPopperView.frame.size.height);
     }
     
-    [self updateGridWithRect:_containerView.frame];
+//    [self updateGridWithRect:_containerView.frame];
 }
 
 
@@ -267,7 +249,7 @@
             [_cellImageViews addObject:imageView];
             
             
-            [_containerView addSubview:[_cellImageViews objectAtIndex:cellNum]];
+//            [_containerView addSubview:[_cellImageViews objectAtIndex:cellNum]];
             cellNum++;
         }
     }
@@ -321,7 +303,7 @@
         }];
     }
     _correctPatternFound = NO;
-    [NSThread detachNewThreadSelector:@selector(setShareImageWithView:) toTarget:self withObject:_containerView];
+//    [NSThread detachNewThreadSelector:@selector(setShareImageWithView:) toTarget:self withObject:_containerView];
 }
 
 
@@ -520,7 +502,6 @@
 {
     _popUpMenuCongratulation.hidden = YES;
     _popUpMenuRegular.hidden = YES;
-    _containerView.userInteractionEnabled = YES;
     
     _menuPopperView.hidden = NO;
     [UIView animateWithDuration:0.2 animations:^{
@@ -555,7 +536,6 @@
             _menuPopperView.hidden = YES;
         }];
         
-        _containerView.userInteractionEnabled = NO;
         [self animateView:_popUpMenuRegular fromScale:0.8 toScale:1.0 bounce:1.1];
     }
     else {
@@ -573,5 +553,25 @@
     UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     [self prepareForOrientation:orientation];
 }
+
+#pragma mark
+#pragma mark UICollectionViewDatasource methods
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return 12;
+}
+
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    BMPuzzleCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:BMPuzzleViewControllerCellIdentifier forIndexPath:indexPath];
+    
+    cell.backgroundColor = [UIColor redColor];
+    
+    return cell;
+}
+
+#pragma mark
+#pragma mark UICollectionViewDelegate methods
+
 
 @end

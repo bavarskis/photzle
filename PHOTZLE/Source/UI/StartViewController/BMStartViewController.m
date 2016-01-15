@@ -130,6 +130,11 @@ NSString *const BMLevelButtonLabelText = @"Level";
     
 }
 
+-(UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 - (BOOL)shouldAutorotate
 {
     return YES;
@@ -195,18 +200,14 @@ NSString *const BMLevelButtonLabelText = @"Level";
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
-    BMPuzzleViewController *puzzleViewController = [[BMPuzzleViewController alloc] initWithDifficultyLevel:_difficultyLevel];
-    puzzleViewController.delegate = self;
-    
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     
-    if (image.size.width > self.view.bounds.size.width*2 && image.size.height >  self.view.bounds.size.height*2) {
-        puzzleViewController.puzzleImage = [[info objectForKey:UIImagePickerControllerOriginalImage] resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(self.view.bounds.size.width*2, self.view.bounds.size.height*2) interpolationQuality:kCGInterpolationHigh];
-    }
-    else {
-        puzzleViewController.puzzleImage = image;
+    if (image.size.width > self.view.bounds.size.width * 2 && image.size.height >  self.view.bounds.size.height * 2) {
+        image = [[info objectForKey:UIImagePickerControllerOriginalImage] resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(self.view.bounds.size.width*2, self.view.bounds.size.height*2) interpolationQuality:kCGInterpolationHigh];
     }
     
+    BMPuzzleViewController *puzzleViewController = [[BMPuzzleViewController alloc] initWithImage:(UIImage *)image difficultyLevel:_difficultyLevel];
+    puzzleViewController.delegate = self;
     [picker presentViewController:puzzleViewController animated:YES completion:nil];
 }
 

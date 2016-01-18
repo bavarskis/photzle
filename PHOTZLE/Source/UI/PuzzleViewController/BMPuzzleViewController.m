@@ -31,7 +31,6 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
 @property (nonatomic, strong) BMPopUpMenuView *popUpMenuRegular;
 @property (nonatomic, strong) BMFloatingMenuPopperView *menuPopperView;
 
-@property BOOL statusBarHidden;
 @property BOOL cellIsSelected;
 @property BOOL correctPatternFound;
 @property NSInteger selectedCell;
@@ -95,11 +94,6 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([BMPuzzleCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:BMPuzzleViewControllerCellIdentifier];
     
     self.view.backgroundColor = [UIColor clearColor];
-    
-    _statusBarHidden = YES;
-    if (_statusBarHidden) {
-        self.view.bounds = [[UIScreen mainScreen] bounds];
-    }
     
     _puzzleImageAspectRatio = _puzzleImage.size.width / _puzzleImage.size.height;
     self.croppedImages = [[NSMutableArray alloc] init];

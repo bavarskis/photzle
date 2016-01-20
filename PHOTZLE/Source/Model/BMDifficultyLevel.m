@@ -43,18 +43,18 @@ NSString *const BMDifficultyLevelCellVerticalKey = @"verticalCells";
     switch (type) {
         case BMDifficultyLevelTypeBeginner:
             _difficultyLevel = [NSDictionary dictionaryWithObjectsAndKeys:
-                                [NSNumber numberWithInt:3], BMDifficultyLevelCellHorizontalKey,
-                                [NSNumber numberWithInt:4], BMDifficultyLevelCellVerticalKey, nil];
+                                @(3), BMDifficultyLevelCellHorizontalKey,
+                                @(4), BMDifficultyLevelCellVerticalKey, nil];
             break;
         case BMDifficultyLevelTypeMedior:
             _difficultyLevel = [NSDictionary dictionaryWithObjectsAndKeys:
-                                [NSNumber numberWithInt:4], BMDifficultyLevelCellHorizontalKey,
-                                [NSNumber numberWithInt:5], BMDifficultyLevelCellVerticalKey, nil];
+                                @(4), BMDifficultyLevelCellHorizontalKey,
+                                @(5), BMDifficultyLevelCellVerticalKey, nil];
             break;
         case BMDifficultyLevelTypeSenior:
             _difficultyLevel = [NSDictionary dictionaryWithObjectsAndKeys:
-                                [NSNumber numberWithInt:5], BMDifficultyLevelCellHorizontalKey,
-                                [NSNumber numberWithInt:6], BMDifficultyLevelCellVerticalKey, nil];
+                                @(5), BMDifficultyLevelCellHorizontalKey,
+                                @(6), BMDifficultyLevelCellVerticalKey, nil];
             break;
             
         default:

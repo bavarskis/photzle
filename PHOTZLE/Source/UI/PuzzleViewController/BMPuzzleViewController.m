@@ -125,20 +125,6 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     
 }
 
-- (void)viewWillLayoutSubviews;
-{
-    [super viewWillLayoutSubviews];
-    UICollectionViewFlowLayout *flowLayout = (id)self.collectionView.collectionViewLayout;
-    
-    if (UIInterfaceOrientationIsLandscape(UIApplication.sharedApplication.statusBarOrientation)) {
-        flowLayout.itemSize = CGSizeMake(100.f, 100.f);
-    } else {
-        flowLayout.itemSize = CGSizeMake(122.f, 122.f);
-    }
-    
-    [flowLayout invalidateLayout]; //force the elements to get laid out again with the new size
-}
-
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
     [self prepareForOrientation:toInterfaceOrientation];
@@ -232,8 +218,6 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
             imageView.image = (UIImage*)[[_croppedImages objectAtIndex:cellNum] image];
             [_cellImageViews addObject:imageView];
             
-            
-//            [_containerView addSubview:[_cellImageViews objectAtIndex:cellNum]];
             cellNum++;
         }
     }

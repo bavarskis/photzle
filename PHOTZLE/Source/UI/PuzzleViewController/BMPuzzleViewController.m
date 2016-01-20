@@ -18,6 +18,7 @@
 #import <QuartzCore/CALayer.h>
 #import "BMAboutViewController.h"
 #import "BMPuzzleCollectionViewCell.h"
+#import "BMPuzzleCollectionViewLayout.h"
 
 NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerCellIdentifier";
 
@@ -92,6 +93,12 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     [super viewDidLoad];
     
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([BMPuzzleCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:BMPuzzleViewControllerCellIdentifier];
+    
+    BMPuzzleCollectionViewLayout *layout = (BMPuzzleCollectionViewLayout *)self.collectionView.collectionViewLayout;
+    layout.numberHorizontalCells = 3;
+    layout.numberVerticalCells = 5;
+    self.collectionView.collectionViewLayout = layout;
+    
     
     self.view.backgroundColor = [UIColor clearColor];
     
@@ -527,12 +534,15 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
 #pragma mark UICollectionViewDatasource methods
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 12;
+    return 3 * 5;
 }
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     BMPuzzleCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:BMPuzzleViewControllerCellIdentifier forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor redColor];
+    cell.layer.borderWidth = 1;
+    cell.layer.borderColor = [UIColor whiteColor].CGColor;
     
     return cell;
 }

@@ -97,6 +97,7 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     BMPuzzleCollectionViewLayout *layout = (BMPuzzleCollectionViewLayout *)self.collectionView.collectionViewLayout;
     layout.numberHorizontalCells = 3;
     layout.numberVerticalCells = 5;
+    layout.isPortraitImage = [self isPortrait:_puzzleImage];
     self.collectionView.collectionViewLayout = layout;
     
     
@@ -129,6 +130,10 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     else {
 
     }
+    
+}
+
+- (void)viewWillLayoutSubviews {
     
 }
 

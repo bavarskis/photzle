@@ -18,6 +18,8 @@ typedef NS_ENUM(NSUInteger, BMDifficultyLevelType) {
 extern NSString *const BMDifficultyLevelCellHorizontalKey;
 extern NSString *const BMDifficultyLevelCellVerticalKey;
 
+// It's a legacy class from release 1.0 when horizontal and vertical num of cells was different
+// and a custom object for users defaults was necessary
 @interface BMDifficultyLevel : NSObject <NSCoding>
 
 @property (nonatomic, readonly) NSDictionary *difficultyLevel;

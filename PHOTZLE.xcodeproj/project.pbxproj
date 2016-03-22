@@ -24,9 +24,7 @@
 		CE1758D11C47A42A006CFBD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1758CF1C47A42A006CFBD9 /* LaunchScreen.storyboard */; };
 		CE1758EC1C47A61F006CFBD9 /* BMAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758DC1C47A61F006CFBD9 /* BMAboutViewController.m */; };
 		CE1758F11C47A61F006CFBD9 /* BMButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758E91C47A61F006CFBD9 /* BMButton.m */; };
-		CE1758F21C47A61F006CFBD9 /* BMImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758EB1C47A61F006CFBD9 /* BMImageView.m */; };
 		CE1758F81C47A65D006CFBD9 /* BMDifficultyLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758F51C47A65D006CFBD9 /* BMDifficultyLevel.m */; };
-		CE1758F91C47A65D006CFBD9 /* BMImageWithIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758F71C47A65D006CFBD9 /* BMImageWithIndex.m */; };
 		CE1759011C47A6C5006CFBD9 /* NSMutableArray+Shuffling.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758FC1C47A6C5006CFBD9 /* NSMutableArray+Shuffling.m */; };
 		CE1759021C47A6C5006CFBD9 /* UIFont+defaultFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758FE1C47A6C5006CFBD9 /* UIFont+defaultFonts.m */; };
 		CE1759031C47A6C5006CFBD9 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1759001C47A6C5006CFBD9 /* UIImage+Resize.m */; };
@@ -63,12 +61,8 @@
 		CE1758DC1C47A61F006CFBD9 /* BMAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMAboutViewController.m; sourceTree = "<group>"; };
 		CE1758E81C47A61F006CFBD9 /* BMButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMButton.h; sourceTree = "<group>"; };
 		CE1758E91C47A61F006CFBD9 /* BMButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMButton.m; sourceTree = "<group>"; };
-		CE1758EA1C47A61F006CFBD9 /* BMImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMImageView.h; sourceTree = "<group>"; };
-		CE1758EB1C47A61F006CFBD9 /* BMImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMImageView.m; sourceTree = "<group>"; };
 		CE1758F41C47A65D006CFBD9 /* BMDifficultyLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMDifficultyLevel.h; sourceTree = "<group>"; };
 		CE1758F51C47A65D006CFBD9 /* BMDifficultyLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMDifficultyLevel.m; sourceTree = "<group>"; };
-		CE1758F61C47A65D006CFBD9 /* BMImageWithIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMImageWithIndex.h; sourceTree = "<group>"; };
-		CE1758F71C47A65D006CFBD9 /* BMImageWithIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMImageWithIndex.m; sourceTree = "<group>"; };
 		CE1758FB1C47A6C5006CFBD9 /* NSMutableArray+Shuffling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Shuffling.h"; sourceTree = "<group>"; };
 		CE1758FC1C47A6C5006CFBD9 /* NSMutableArray+Shuffling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Shuffling.m"; sourceTree = "<group>"; };
 		CE1758FD1C47A6C5006CFBD9 /* UIFont+defaultFonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+defaultFonts.h"; sourceTree = "<group>"; };
@@ -216,8 +210,6 @@
 				8659E7CE1C48DA1B002CD92E /* BMPopUpMenuView.m */,
 				CE1758E81C47A61F006CFBD9 /* BMButton.h */,
 				CE1758E91C47A61F006CFBD9 /* BMButton.m */,
-				CE1758EA1C47A61F006CFBD9 /* BMImageView.h */,
-				CE1758EB1C47A61F006CFBD9 /* BMImageView.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -227,8 +219,6 @@
 			children = (
 				CE1758F41C47A65D006CFBD9 /* BMDifficultyLevel.h */,
 				CE1758F51C47A65D006CFBD9 /* BMDifficultyLevel.m */,
-				CE1758F61C47A65D006CFBD9 /* BMImageWithIndex.h */,
-				CE1758F71C47A65D006CFBD9 /* BMImageWithIndex.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -331,7 +321,6 @@
 				CE1758C91C47A42A006CFBD9 /* ViewController.m in Sources */,
 				8659E7D41C48DA6B002CD92E /* BMPuzzleViewController.m in Sources */,
 				CE1758C61C47A42A006CFBD9 /* AppDelegate.m in Sources */,
-				CE1758F91C47A65D006CFBD9 /* BMImageWithIndex.m in Sources */,
 				CE1758F81C47A65D006CFBD9 /* BMDifficultyLevel.m in Sources */,
 				CE1759011C47A6C5006CFBD9 /* NSMutableArray+Shuffling.m in Sources */,
 				8659E7CF1C48DA1B002CD92E /* BMFloatingMenuPopperView.m in Sources */,
@@ -343,7 +332,6 @@
 				CE1758C31C47A42A006CFBD9 /* main.m in Sources */,
 				CE1758EC1C47A61F006CFBD9 /* BMAboutViewController.m in Sources */,
 				8659E7D01C48DA1B002CD92E /* BMPopUpMenuView.m in Sources */,
-				CE1758F21C47A61F006CFBD9 /* BMImageView.m in Sources */,
 				CE1759031C47A6C5006CFBD9 /* UIImage+Resize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -60,7 +60,7 @@
 
 - (void)handleTap
 {
-    [_delegate menuPopperWasTapped:self];
+    [_delegate menuPopperDidTap:self];
 }
 
 @end

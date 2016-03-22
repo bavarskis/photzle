@@ -8,9 +8,7 @@
 
 #import "BMPuzzleViewController.h"
 #import <QuartzCore/QuartzCore.h>
-#import "BMImageView.h"
 #import "NSMutableArray+Shuffling.h"
-#import "BMImageWithIndex.h"
 #import "BMPopUpMenuView.h"
 #import "BMStartViewController.h"
 #import "BMFloatingMenuPopperView.h"
@@ -22,10 +20,11 @@
 
 NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerCellIdentifier";
 
-@interface BMPuzzleViewController () <UIScrollViewDelegate, BMImageViewDelegate, BMPopUpMenuViewDelegate, BMFloatingMenuPopperViewDelegate, BMAboutViewControllerDelegate>
+@interface BMPuzzleViewController () <UIScrollViewDelegate, BMPopUpMenuViewDelegate, BMFloatingMenuPopperViewDelegate, BMAboutViewControllerDelegate>
 
 @property (nonatomic, strong) UIImage *puzzleImage;
 @property (nonatomic, strong) BMDifficultyLevel *level;
+@property (nonatomic, assign) NSUInteger numberOfCells;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) BMPopUpMenuView *popUpMenuCongratulation;
@@ -35,26 +34,19 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
 @property BOOL cellIsSelected;
 @property BOOL correctPatternFound;
 @property NSInteger selectedCell;
-@property (nonatomic, assign) CGFloat statusBarHeight;
-@property (nonatomic, assign) CGFloat puzzleImageAspectRatio;
-@property (nonatomic, assign) CGFloat containerViewAspectRatio;
 
 @property (nonatomic, strong) NSMutableArray *croppedImages;
-@property (nonatomic, strong) NSMutableArray *cellImageViews;
-
 @property (nonatomic, strong) UIImage *shareImage;
 
 
-- (BOOL)isPortrait:(UIImage*)image;
-- (void)prepareForOrientation:(UIInterfaceOrientation)orientation;
+- (void)updateUI;
 - (UIImage*)croppedImage:(UIImage*)image cropRect:(CGRect)rect;
-- (void)createGridInSuperview:(UIView*)view;
-- (void)updateGridWithRect:(CGRect)rect;
 - (void)reshuffleGridAnimated:(id)animated;
 - (void)finishPuzzle;
-- (void)animateView:(UIView*)view fromScale:(CGFloat)from toScale:(CGFloat)to bounce:(CGFloat)bounce;
 - (void)menuPopperViewMoved:(id)sender withEvent:(UIEvent *)event;
 - (void)setShareImageWithView:(UIView *)view;
+
+- (void)animateView:(UIView*)view fromScale:(CGFloat)from toScale:(CGFloat)to bounce:(CGFloat)bounce;
 
 @end
 
@@ -84,6 +76,8 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
+    
     
 }
 
@@ -92,20 +86,23 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
 {
     [super viewDidLoad];
     
+    // Level
+    {
+        NSNumber *numHorCellsObject = [_level.difficultyLevel objectForKey:BMDifficultyLevelCellHorizontalKey];
+        NSNumber *numVerCellsObject = [_level.difficultyLevel objectForKey:BMDifficultyLevelCellVerticalKey];
+        _numberOfCells = MIN([numHorCellsObject integerValue], [numVerCellsObject integerValue]);
+    }
+    
+    self.croppedImages = [[NSMutableArray alloc] init];
+    [self createCroppedImages];
+    
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([BMPuzzleCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:BMPuzzleViewControllerCellIdentifier];
     
     BMPuzzleCollectionViewLayout *layout = (BMPuzzleCollectionViewLayout *)self.collectionView.collectionViewLayout;
-    layout.numberHorizontalCells = 3;
-    layout.numberVerticalCells = 5;
-    layout.isPortraitImage = [self isPortrait:_puzzleImage];
+    layout.numberOfCells = _numberOfCells;
     self.collectionView.collectionViewLayout = layout;
     
-    
     self.view.backgroundColor = [UIColor clearColor];
-    
-    _puzzleImageAspectRatio = _puzzleImage.size.width / _puzzleImage.size.height;
-    self.croppedImages = [[NSMutableArray alloc] init];
-    self.cellImageViews = [[NSMutableArray alloc] init];
     
     self.popUpMenuCongratulation = [[BMPopUpMenuView alloc] initWithFrame:CGRectMake(0, 0, BMPopUpMenuViewWidth, BMPopUpMenuViewHeight) menuType:BMPopUpMenuTypeCongratulation];
     _popUpMenuCongratulation.delegate = self;
@@ -122,24 +119,18 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     self.menuPopperView = [[BMFloatingMenuPopperView alloc] initWithFrame:CGRectMake(20, 20, 60, 60)];
     _menuPopperView.delegate = self;
     [_menuPopperView addTarget:self action:@selector(menuPopperViewMoved:withEvent:) forControlEvents:UIControlEventTouchDragInside];
-    
-    // aspect fit
-    if (_containerViewAspectRatio > _puzzleImageAspectRatio) {
-
-    }
-    else {
-
-    }
+    [self.collectionView addSubview:_menuPopperView];
     
 }
 
 - (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
     
 }
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    [self prepareForOrientation:toInterfaceOrientation];
+    [self updateUI];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
@@ -159,23 +150,7 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
 #pragma mark
 #pragma mark private methods
 
-
-- (BOOL)isPortrait:(UIImage *)image
-{
-    if (image.size.width > image.size.height) {
-        return NO;
-    }
-    return YES;
-}
-
-- (void)prepareForOrientation:(UIInterfaceOrientation)orientation
-{
-    CGRect screen = [[UIScreen mainScreen] bounds];
-    //screen.size.height = screen.size.height - _statusBarHeight;
-    CGRect portraitRect = screen;
-    CGRect landscapeRect = CGRectMake(portraitRect.origin.x, portraitRect.origin.y, portraitRect.size.height + _statusBarHeight, portraitRect.size.width - _statusBarHeight);
-    
-    
+- (void)updateUI {
     if (_popUpMenuCongratulation) {
         _popUpMenuCongratulation.center = _collectionView.center;
     }
@@ -187,8 +162,6 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     if (_menuPopperView) {
         _menuPopperView.frame = CGRectMake(20, 20, _menuPopperView.frame.size.width, _menuPopperView.frame.size.height);
     }
-    
-//    [self updateGridWithRect:_containerView.frame];
 }
 
 
@@ -201,89 +174,30 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     return newImage;
 }
 
-- (void)createGridInSuperview:(UIView *)view
-{
-    NSNumber *numHorCellsObject = [_level.difficultyLevel objectForKey:BMDifficultyLevelCellHorizontalKey];
-    NSNumber *numVerCellsObject = [_level.difficultyLevel objectForKey:BMDifficultyLevelCellVerticalKey];
-    
-    NSUInteger numHorCells = [self isPortrait:_puzzleImage] ? [numHorCellsObject integerValue] : [numVerCellsObject integerValue];
-    NSUInteger numVerCells = [self isPortrait:_puzzleImage] ? [numVerCellsObject integerValue] : [numHorCellsObject integerValue];
-    
-    NSUInteger cellNum = 0;
-    for (int i = 0; i < numVerCells; i++) {
-        for (int j = 0; j < numHorCells; j++) {
-            CGRect cellRect = CGRectMake(j * (view.frame.size.width / numHorCells), i * (view.frame.size.height / numVerCells), view.frame.size.width / numHorCells, view.frame.size.height / numVerCells);
-            BMImageView *imageView = [[BMImageView alloc] initWithFrame:cellRect];
-            imageView.delegate = self;
-            [imageView setIndex:cellNum];
-            imageView.userInteractionEnabled = NO;
-            imageView.layer.borderWidth = 1;
-            imageView.layer.borderColor = [UIColor whiteColor].CGColor;
+- (void)createCroppedImages {
+    NSInteger totalTiles = 0;
+    NSInteger verticalRow = 0;
+    while (verticalRow < _numberOfCells) {
+        NSInteger horizontalRow = 0;
+        while (horizontalRow < _numberOfCells) {
             
-            CGRect cellImageRect = CGRectMake(j * (_puzzleImage.size.width / numHorCells), i * (_puzzleImage.size.height / numVerCells), _puzzleImage.size.width / numHorCells, _puzzleImage.size.height / numVerCells);
+            CGFloat width = _puzzleImage.size.width / _numberOfCells;
+            CGFloat height = _puzzleImage.size.height / _numberOfCells;
             
-            BMImageWithIndex *imageWithIndex = [[BMImageWithIndex alloc] init];
-            imageWithIndex.image = [self croppedImage:_puzzleImage cropRect:cellImageRect];
-            imageWithIndex.index = cellNum;
-            [_croppedImages addObject:imageWithIndex];
+            CGRect imageRect = CGRectMake(width * horizontalRow, height * verticalRow, width, height);
+            _croppedImages[totalTiles] = [self croppedImage:_puzzleImage cropRect:imageRect];
             
-            imageView.image = (UIImage*)[[_croppedImages objectAtIndex:cellNum] image];
-            [_cellImageViews addObject:imageView];
-            
-            cellNum++;
+            totalTiles++;
+            horizontalRow++;
         }
-    }
-    
-    [_collectionView addSubview:_menuPopperView];
-    
-    BOOL animated = YES;
-    NSNumber *passedValue = [NSNumber numberWithBool:animated];
-    [self performSelector:@selector(reshuffleGridAnimated:) withObject:passedValue afterDelay:2.5];
-}
-
-
-- (void)updateGridWithRect:(CGRect)rect
-{
-    NSNumber *numHorCellsObject = [_level.difficultyLevel objectForKey:BMDifficultyLevelCellHorizontalKey];
-    NSNumber *numVerCellsObject = [_level.difficultyLevel objectForKey:BMDifficultyLevelCellVerticalKey];
-    
-    NSUInteger numHorCells = [self isPortrait:_puzzleImage] ? [numHorCellsObject integerValue] : [numVerCellsObject integerValue];
-    NSUInteger numVerCells = [self isPortrait:_puzzleImage] ? [numVerCellsObject integerValue] : [numHorCellsObject integerValue];
-    
-    
-    NSUInteger numCells = 0;
-    for (int i = 0; i < numVerCells; i++) {
-        for (int j = 0; j < numHorCells; j++) {
-            CGRect cellRect = CGRectMake(j * (rect.size.width / numHorCells), i * (rect.size.height / numVerCells), rect.size.width / numHorCells, rect.size.height / numVerCells);
-            ((BMImageView*)[_cellImageViews objectAtIndex:numCells]).frame = cellRect;
-            numCells++;
-        }
+        verticalRow++;
     }
 }
 
 - (void)reshuffleGridAnimated:(id)animated
 {
     [_croppedImages shuffle];
-    
-    if ([animated integerValue]==1) {
-        [_cellImageViews enumerateObjectsUsingBlock:^(BMImageView *imageView, NSUInteger idx, BOOL *stop) {
-            
-            imageView.userInteractionEnabled = YES;
-            [UIView transitionWithView:imageView
-                              duration:0.5f
-                               options:UIViewAnimationOptionTransitionFlipFromRight
-                            animations:^{
-                                imageView.image = (UIImage*)[[_croppedImages objectAtIndex:idx] image];
-                            } completion:NULL];
-        }];
-    }
-    else {
-        [_cellImageViews enumerateObjectsUsingBlock:^(BMImageView *imageView, NSUInteger idx, BOOL *stop) {
-            imageView.image = (UIImage*)[[_croppedImages objectAtIndex:idx] image];
-        }];
-    }
     _correctPatternFound = NO;
-//    [NSThread detachNewThreadSelector:@selector(setShareImageWithView:) toTarget:self withObject:_containerView];
 }
 
 
@@ -298,28 +212,8 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
         _menuPopperView.hidden = YES;
     }];
     
-    [_cellImageViews enumerateObjectsUsingBlock:^(BMImageView *imageView, NSUInteger idx, BOOL *stop) {
-        imageView.userInteractionEnabled = NO;
-    }];
-    
     _correctPatternFound = YES;
     [self animateView:_popUpMenuCongratulation fromScale:0.8 toScale:1.0 bounce:1.1];
-    
-}
-
-
-- (void)animateView:(UIView*)view fromScale:(CGFloat)from toScale:(CGFloat)to bounce:(CGFloat)bounce
-{
-    CAKeyframeAnimation *scaleAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
-    scaleAnimation.duration = 0.2;
-    scaleAnimation.values = @[[NSValue valueWithCATransform3D:CATransform3DMakeScale(from, from, 1.0)],
-                              [NSValue valueWithCATransform3D:CATransform3DMakeScale(bounce, bounce, 1.0)],
-                              [NSValue valueWithCATransform3D:CATransform3DMakeScale(to, to, 1.0)]];
-    scaleAnimation.keyTimes = @[@0.0, @0.7, @1.0];
-    scaleAnimation.timingFunctions = @[[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
-                                       [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
-    
-    [view.layer addAnimation:scaleAnimation forKey:@"scaleAnimation"];
     
 }
 
@@ -346,16 +240,13 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     
 }
 
-
 - (void)setShareImageWithView:(UIView *)view
 {
     @autoreleasepool {
         
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);
         [view.layer renderInContext:UIGraphicsGetCurrentContext()];
-        
         UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
-        
         UIGraphicsEndImageContext();
         
         self.shareImage = img;
@@ -363,80 +254,10 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     }
 }
 
-
-#pragma mark
-#pragma mark BMImageViewDelegate methods
-
-- (void)imageViewWasTapped:(BMImageView *)imageView
-{
-    //        [self finishPuzzle];
-    //        return;
-    
-    if (_cellIsSelected) {
-        if (_selectedCell != imageView.index) {
-            
-            UIImage *tempImage = imageView.image;
-            imageView.image = ((BMImageWithIndex*)[_croppedImages objectAtIndex:_selectedCell]).image;
-            //            imageView.layer.borderColor = [UIColor whiteColor].CGColor;
-            //            imageView.layer.borderWidth = 1;
-            
-            ((BMImageView*)[_cellImageViews objectAtIndex:_selectedCell]).image = tempImage;
-            ((BMImageView*)[_cellImageViews objectAtIndex:_selectedCell]).layer.borderColor = [UIColor whiteColor].CGColor;
-            ((BMImageView*)[_cellImageViews objectAtIndex:_selectedCell]).layer.borderWidth = 1;
-            
-            [_croppedImages exchangeObjectAtIndex:imageView.index withObjectAtIndex:_selectedCell];
-            
-            imageView.layer.opacity = 0.6;
-            [UIView animateWithDuration:0.2 animations:^{
-                imageView.layer.opacity = 1;
-            }];
-            
-        }
-        else {
-            // deselect the same cell
-            imageView.layer.borderWidth = 1;
-            imageView.layer.borderColor = [UIColor whiteColor].CGColor;
-            
-        }
-        
-        _cellIsSelected = NO;
-    }
-    else {
-        _cellIsSelected = YES;
-        imageView.layer.borderWidth = 4;
-        imageView.layer.borderColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bluepixels.png"]].CGColor;
-        
-    }
-    _selectedCell = imageView.index;
-    
-    NSUInteger index = 0;
-    
-    NSNumber *numHorCellsObject = [_level.difficultyLevel objectForKey:BMDifficultyLevelCellHorizontalKey];
-    NSNumber *numVerCellsObject = [_level.difficultyLevel objectForKey:BMDifficultyLevelCellVerticalKey];
-    
-    NSUInteger numHorCells = [self isPortrait:_puzzleImage] ? [numHorCellsObject integerValue] : [numVerCellsObject integerValue];
-    NSUInteger numVerCells = [self isPortrait:_puzzleImage] ? [numVerCellsObject integerValue] : [numHorCellsObject integerValue];
-    
-    NSUInteger numCells = numVerCells * numHorCells;
-    for (BMImageWithIndex *imageWithIndex in _croppedImages) {
-        if (imageWithIndex.index != index ) {
-            return;
-        }
-        else if (index == numCells - 1) {
-            [self finishPuzzle];
-            return;
-        }
-        
-        index++;
-    }
-}
-
-
 #pragma mark
 #pragma mark BMPopUpMenuDelegate
 
-- (void)shareButtonWasTapped:(BMPopUpMenuView *)popUpMenu
-{
+- (void)shareButtonDidTap:(BMPopUpMenuView *)popUpMenu {
     NSString *shareText;
     
     if (_correctPatternFound) {
@@ -469,8 +290,7 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     [self presentViewController:activityViewController animated:YES completion:nil];
 }
 
-- (void)makeNewPuzzleButtonWasTapped:(BMPopUpMenuView *)popUpMenu
-{
+- (void)makeNewPuzzleButtonDidTap:(BMPopUpMenuView *)popUpMenu {
     if ([_delegate respondsToSelector:@selector(puzzleViewControllerAttemptedNewPuzzle:)]) {
         _popUpMenuCongratulation.hidden = YES;
         _popUpMenuRegular.hidden = YES;
@@ -479,8 +299,7 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     }
 }
 
-- (void)OKButtonWasTapped:(BMPopUpMenuView *)popUpMenu
-{
+- (void)OKButtonDidTap:(BMPopUpMenuView *)popUpMenu {
     _popUpMenuCongratulation.hidden = YES;
     _popUpMenuRegular.hidden = YES;
     
@@ -492,8 +311,7 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     }];
 }
 
-- (void)aboutButtonWasTapped:(BMPopUpMenuView *)popUpView
-{
+- (void)aboutButtonDidTap:(BMPopUpMenuView *)popUpView {
     BMAboutViewController *aboutViewController = [[BMAboutViewController alloc] init];
     aboutViewController.delegate = self;
     aboutViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
@@ -505,8 +323,7 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
 #pragma mark
 #pragma mark BMFloatingMenuPopperViewDelegate
 
-- (void)menuPopperWasTapped:(BMFloatingMenuPopperView *)popperView
-{
+- (void)menuPopperDidTap:(BMFloatingMenuPopperView *)popperView {
     if (_popUpMenuRegular.hidden && _popUpMenuCongratulation.hidden) {
         _popUpMenuRegular.center = _collectionView.center;
         _popUpMenuRegular.hidden = NO;
@@ -528,18 +345,16 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
 #pragma mark
 #pragma mark BMAboutViewControllerDelegate methods
 
-- (void)aboutViewControllerBackButtonWasTapped:(BMAboutViewController *)aboutViewController
-{
+- (void)aboutViewControllerDidTapBackButton:(BMAboutViewController *)aboutViewController {
     [self dismissViewControllerAnimated:YES completion:nil];
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    [self prepareForOrientation:orientation];
+    [self updateUI];
 }
 
 #pragma mark
 #pragma mark UICollectionViewDatasource methods
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 3 * 5;
+    return _numberOfCells * _numberOfCells;
 }
 
 
@@ -548,12 +363,27 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     cell.backgroundColor = [UIColor redColor];
     cell.layer.borderWidth = 1;
     cell.layer.borderColor = [UIColor whiteColor].CGColor;
+    cell.imageView.image = _croppedImages[indexPath.item];
     
     return cell;
 }
 
 #pragma mark
-#pragma mark UICollectionViewDelegate methods
+#pragma mark Helpers
+
+- (void)animateView:(UIView*)view fromScale:(CGFloat)from toScale:(CGFloat)to bounce:(CGFloat)bounce {
+    CAKeyframeAnimation *scaleAnimation = [CAKeyframeAnimation animationWithKeyPath:@"transform"];
+    scaleAnimation.duration = 0.2;
+    scaleAnimation.values = @[[NSValue valueWithCATransform3D:CATransform3DMakeScale(from, from, 1.0)],
+                              [NSValue valueWithCATransform3D:CATransform3DMakeScale(bounce, bounce, 1.0)],
+                              [NSValue valueWithCATransform3D:CATransform3DMakeScale(to, to, 1.0)]];
+    scaleAnimation.keyTimes = @[@0.0, @0.7, @1.0];
+    scaleAnimation.timingFunctions = @[[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut],
+                                       [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    
+    [view.layer addAnimation:scaleAnimation forKey:@"scaleAnimation"];
+    
+}
 
 
 @end

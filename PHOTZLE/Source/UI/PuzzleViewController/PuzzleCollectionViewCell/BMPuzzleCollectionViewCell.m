@@ -10,8 +10,6 @@
 
 @interface BMPuzzleCollectionViewCell ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-
 @end
 
 @implementation BMPuzzleCollectionViewCell

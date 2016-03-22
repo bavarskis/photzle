@@ -20,10 +20,10 @@ extern CGFloat const BMPopUpMenuViewHeight;
 
 @protocol BMPopUpMenuViewDelegate <NSObject>
 
-- (void)makeNewPuzzleButtonWasTapped:(BMPopUpMenuView*)popUpView;
-- (void)shareButtonWasTapped:(BMPopUpMenuView*)popUpView;
-- (void)OKButtonWasTapped:(BMPopUpMenuView*)popUpView;
-- (void)aboutButtonWasTapped:(BMPopUpMenuView*)popUpView;
+- (void)makeNewPuzzleButtonDidTap:(BMPopUpMenuView*)popUpView;
+- (void)shareButtonDidTap:(BMPopUpMenuView*)popUpView;
+- (void)OKButtonDidTap:(BMPopUpMenuView*)popUpView;
+- (void)aboutButtonDidTap:(BMPopUpMenuView*)popUpView;
 
 @end
 

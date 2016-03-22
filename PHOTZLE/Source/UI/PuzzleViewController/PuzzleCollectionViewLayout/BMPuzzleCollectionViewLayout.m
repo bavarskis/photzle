@@ -8,7 +8,8 @@
 
 #import "BMPuzzleCollectionViewLayout.h"
 
-@interface BMPuzzleCollectionViewLayout()
+@interface BMPuzzleCollectionViewLayout() {
+}
 
 @end
 
@@ -17,25 +18,20 @@
 - (void)prepareLayout {
     [super prepareLayout];
     
-    
 }
 
 - (nullable NSArray<__kindof UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect {
     NSMutableArray *attributes = [NSMutableArray array];
-    NSLog(@"%@", NSStringFromCGRect(rect));
     
-
+    CGFloat contentMinSize = MIN(self.collectionViewContentSize.width, self.collectionViewContentSize.height);
+    CGFloat contentMaxSize = MAX(self.collectionViewContentSize.width, self.collectionViewContentSize.height);
+    CGFloat offsetX = contentMinSize == self.collectionViewContentSize.width ? 0.0 : (contentMaxSize - contentMinSize) / 2;
+    CGFloat offsetY = contentMinSize == self.collectionViewContentSize.width ? (contentMaxSize - contentMinSize) / 2 : 0.0;
     
     NSUInteger cellNum = 0;
-    CGFloat contentWidth = self.collectionView.frame.size.width;
-    CGFloat contentHeight = self.collectionView.frame.size.width;
-    
-    if (!_isPortraitImage) {
-
-    }
-    for (int i = 0; i < _numberVerticalCells; i++) {
-        for (int j = 0; j < _numberHorizontalCells; j++) {
-            CGRect cellRect = CGRectMake(j * (self.collectionView.frame.size.width / _numberHorizontalCells), i * (self.collectionView.frame.size.height / _numberVerticalCells), self.collectionView.frame.size.width / _numberHorizontalCells, self.collectionView.frame.size.height / _numberVerticalCells);
+    for (int i = 0; i < _numberOfCells; i++) {
+        for (int j = 0; j < _numberOfCells; j++) {
+            CGRect cellRect = CGRectMake(contentMinSize / _numberOfCells * j + offsetX, contentMinSize / _numberOfCells * i + offsetY, contentMinSize / _numberOfCells, contentMinSize / _numberOfCells);
             
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:cellNum inSection:0];
             UICollectionViewLayoutAttributes *cellAttributes = [self layoutAttributesForItemAtIndexPath:indexPath];
@@ -46,11 +42,6 @@
         }
     }
     
-    
-
-
-
-    
     return attributes;
 }
 
@@ -60,9 +51,7 @@
 }
                                                          
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
     UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
-    
     return attributes;
 }
 

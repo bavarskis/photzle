@@ -11,9 +11,7 @@
 @interface BMPuzzleCollectionViewLayout : UICollectionViewLayout
 
 @property (nonatomic, strong) UIImage *puzzleImage;
-@property (nonatomic, assign) BOOL isPortraitImage;
-@property (nonatomic, assign) NSUInteger numberHorizontalCells;
-@property (nonatomic, assign) NSUInteger numberVerticalCells;
+@property (nonatomic, assign) NSUInteger numberOfCells;
 
 
 

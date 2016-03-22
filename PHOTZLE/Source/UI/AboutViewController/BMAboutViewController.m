@@ -230,11 +230,6 @@ NSString *const BMAboutPhotographyContributionText = @"Original photo by Frédé
     return NO;
 }
 
--(NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskPortrait;
-}
-
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
 {
     return UIInterfaceOrientationPortrait;
@@ -246,7 +241,7 @@ NSString *const BMAboutPhotographyContributionText = @"Original photo by Frédé
 
 - (void)backButtonWasTapped
 {
-    [_delegate aboutViewControllerBackButtonWasTapped:self];
+    [_delegate aboutViewControllerDidTapBackButton:self];
 
 }
 

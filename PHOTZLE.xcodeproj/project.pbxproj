@@ -16,6 +16,8 @@
 		8659E7E01C48DB70002CD92E /* BMPuzzleCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8659E7DF1C48DB70002CD92E /* BMPuzzleCollectionViewLayout.m */; };
 		8659E7E51C48DBA7002CD92E /* BMPuzzleCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8659E7E31C48DBA7002CD92E /* BMPuzzleCollectionViewCell.m */; };
 		8659E7E61C48DBA7002CD92E /* BMPuzzleCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8659E7E41C48DBA7002CD92E /* BMPuzzleCollectionViewCell.xib */; };
+		86FCBDB31CCD29CB003278EB /* BMCropImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 86FCBDB11CCD29CB003278EB /* BMCropImageViewController.m */; };
+		86FCBDB41CCD29CB003278EB /* BMCropImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 86FCBDB21CCD29CB003278EB /* BMCropImageViewController.xib */; };
 		CE1758C31C47A42A006CFBD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758C21C47A42A006CFBD9 /* main.m */; };
 		CE1758C61C47A42A006CFBD9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758C51C47A42A006CFBD9 /* AppDelegate.m */; };
 		CE1758C91C47A42A006CFBD9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758C81C47A42A006CFBD9 /* ViewController.m */; };
@@ -47,6 +49,9 @@
 		8659E7E21C48DBA7002CD92E /* BMPuzzleCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMPuzzleCollectionViewCell.h; sourceTree = "<group>"; };
 		8659E7E31C48DBA7002CD92E /* BMPuzzleCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMPuzzleCollectionViewCell.m; sourceTree = "<group>"; };
 		8659E7E41C48DBA7002CD92E /* BMPuzzleCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BMPuzzleCollectionViewCell.xib; sourceTree = "<group>"; };
+		86FCBDB01CCD29CB003278EB /* BMCropImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMCropImageViewController.h; sourceTree = "<group>"; };
+		86FCBDB11CCD29CB003278EB /* BMCropImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMCropImageViewController.m; sourceTree = "<group>"; };
+		86FCBDB21CCD29CB003278EB /* BMCropImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BMCropImageViewController.xib; sourceTree = "<group>"; };
 		CE1758BE1C47A42A006CFBD9 /* PHOTZLE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PHOTZLE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1758C21C47A42A006CFBD9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CE1758C41C47A42A006CFBD9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -105,6 +110,16 @@
 			path = PHOTZLE/Source/UI/PuzzleViewController/PuzzleCollectionViewCell;
 			sourceTree = SOURCE_ROOT;
 		};
+		86FCBDAF1CCD29A3003278EB /* CropImageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				86FCBDB01CCD29CB003278EB /* BMCropImageViewController.h */,
+				86FCBDB11CCD29CB003278EB /* BMCropImageViewController.m */,
+				86FCBDB21CCD29CB003278EB /* BMCropImageViewController.xib */,
+			);
+			path = CropImageViewController;
+			sourceTree = "<group>";
+		};
 		CE1758B51C47A42A006CFBD9 = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +175,7 @@
 		CE1758D91C47A5FA006CFBD9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				86FCBDAF1CCD29A3003278EB /* CropImageViewController */,
 				CE1758DA1C47A61F006CFBD9 /* AboutViewController */,
 				CE1758DD1C47A61F006CFBD9 /* PuzzleViewController */,
 				CE1758E41C47A61F006CFBD9 /* StartViewController */,
@@ -307,6 +323,7 @@
 				CE1758CE1C47A42A006CFBD9 /* Assets.xcassets in Resources */,
 				8659E7E61C48DBA7002CD92E /* BMPuzzleCollectionViewCell.xib in Resources */,
 				CE1758CC1C47A42A006CFBD9 /* Main.storyboard in Resources */,
+				86FCBDB41CCD29CB003278EB /* BMCropImageViewController.xib in Resources */,
 				8659E7D51C48DA6B002CD92E /* BMPuzzleViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,6 +346,7 @@
 				CE1759021C47A6C5006CFBD9 /* UIFont+defaultFonts.m in Sources */,
 				CE1758F11C47A61F006CFBD9 /* BMButton.m in Sources */,
 				8659E7E51C48DBA7002CD92E /* BMPuzzleCollectionViewCell.m in Sources */,
+				86FCBDB31CCD29CB003278EB /* BMCropImageViewController.m in Sources */,
 				CE1758C31C47A42A006CFBD9 /* main.m in Sources */,
 				CE1758EC1C47A61F006CFBD9 /* BMAboutViewController.m in Sources */,
 				8659E7D01C48DA1B002CD92E /* BMPopUpMenuView.m in Sources */,

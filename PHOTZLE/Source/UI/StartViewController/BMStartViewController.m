@@ -12,6 +12,7 @@
 #import "BMDifficultyLevel.h"
 #import "UIImage+Resize.h"
 #import "UIFont+defaultFonts.h"
+#import "BMCropImageViewController.h"
 
 #define BMStartScreenMenuButtonsHorizontalSpacing 45.0
 
@@ -22,7 +23,7 @@ NSString *const BMTakePicureButtonLabelText = @"Camera";
 NSString *const BMLevelButtonLabelText = @"Level";
 
 
-@interface BMStartViewController () <BMPuzzleViewControllerDelegate>
+@interface BMStartViewController () <BMPuzzleViewControllerDelegate, BMCropImageViewControllerDelegate>
 
 @property (nonatomic, weak) IBOutlet UIButton *choosePictureButton;
 @property (nonatomic, weak) IBOutlet UIButton *takePictureButton;
@@ -206,9 +207,19 @@ NSString *const BMLevelButtonLabelText = @"Level";
         image = [[info objectForKey:UIImagePickerControllerOriginalImage] resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(self.view.bounds.size.width*2, self.view.bounds.size.height*2) interpolationQuality:kCGInterpolationHigh];
     }
     
-    BMPuzzleViewController *puzzleViewController = [[BMPuzzleViewController alloc] initWithImage:(UIImage *)image difficultyLevel:_difficultyLevel];
-    puzzleViewController.delegate = self;
-    [picker presentViewController:puzzleViewController animated:YES completion:nil];
+    
+    BMCropImageViewController *viewController = [[BMCropImageViewController alloc] initWithImage:image];
+    viewController.delegate = self;
+    [picker presentViewController:viewController animated:YES completion:nil];
+}
+
+#pragma mark
+#pragma mark BMPuzzleViewControllerDelegate methods
+
+- (void)cropImageViewController:(BMCropImageViewController *)viewController didCropImage:(UIImage *)image {
+        BMPuzzleViewController *puzzleViewController = [[BMPuzzleViewController alloc] initWithImage:(UIImage *)image difficultyLevel:_difficultyLevel];
+        puzzleViewController.delegate = self;
+    [viewController presentViewController:puzzleViewController animated:YES completion:NULL];
 }
 
 #pragma mark

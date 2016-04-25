@@ -34,6 +34,7 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
 @property BOOL cellIsSelected;
 @property BOOL correctPatternFound;
 @property NSInteger selectedCell;
+@property UILongPressGestureRecognizer *longPressGestureRecognizer;
 
 @property (nonatomic, strong) NSMutableArray *croppedImages;
 @property (nonatomic, strong) UIImage *shareImage;
@@ -65,7 +66,7 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
 
 - (id)initWithImage:(UIImage *)image difficultyLevel:(BMDifficultyLevel *)level {
     
-    self = [super initWithNibName:NSStringFromClass([BMPuzzleViewController class]) bundle:nil];
+    self = [super initWithNibName:NSStringFromClass([self class]) bundle:nil];
     if (self) {
         self.level = level;
         self.puzzleImage = image;
@@ -86,6 +87,8 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
 {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor clearColor];
+    
     // Level
     {
         NSNumber *numHorCellsObject = [_level.difficultyLevel objectForKey:BMDifficultyLevelCellHorizontalKey];
@@ -102,7 +105,10 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     layout.numberOfCells = _numberOfCells;
     self.collectionView.collectionViewLayout = layout;
     
-    self.view.backgroundColor = [UIColor clearColor];
+
+    
+    self.longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(didLongPressCollectionView:)];
+    [self.collectionView addGestureRecognizer:_longPressGestureRecognizer];
     
     self.popUpMenuCongratulation = [[BMPopUpMenuView alloc] initWithFrame:CGRectMake(0, 0, BMPopUpMenuViewWidth, BMPopUpMenuViewHeight) menuType:BMPopUpMenuTypeCongratulation];
     _popUpMenuCongratulation.delegate = self;
@@ -144,6 +150,30 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskAll;
+}
+
+#pragma mark - User Actions
+
+- (void)didLongPressCollectionView:(UILongPressGestureRecognizer *)sender {
+    switch (sender.state) {
+        case UIGestureRecognizerStateBegan:
+            NSLog(@"state bagen");
+            break;
+        case UIGestureRecognizerStateChanged:
+            NSLog(@"state changed");
+            break;
+        case UIGestureRecognizerStateEnded:
+            NSLog(@"state ended");
+            break;
+        case UIGestureRecognizerStateCancelled:
+            NSLog(@"state cancelled");
+            break;
+        case UIGestureRecognizerStateFailed:
+            NSLog(@"state failed");
+            break;
+        default:
+            break;
+    }
 }
 
 

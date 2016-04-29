@@ -241,7 +241,7 @@ NSString *const BMAboutPhotographyContributionText = @"Original photo by Frédé
 
 - (void)backButtonWasTapped
 {
-    [_delegate aboutViewControllerDidTapBackButton:self];
+    [_delegate didTapAboutViewControllerBackButton:self];
 
 }
 

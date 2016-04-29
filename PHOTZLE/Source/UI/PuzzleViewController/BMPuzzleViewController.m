@@ -24,7 +24,7 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
 
 @property (nonatomic, strong) UIImage *puzzleImage;
 @property (nonatomic, strong) BMDifficultyLevel *level;
-@property (nonatomic, assign) NSUInteger numberOfCells;
+@property (nonatomic, assign) NSUInteger numberOfRows;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) BMPopUpMenuView *popUpMenuCongratulation;
@@ -42,7 +42,7 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
 
 - (void)updateUI;
 - (UIImage*)croppedImage:(UIImage*)image cropRect:(CGRect)rect;
-- (void)reshuffleGridAnimated:(id)animated;
+- (void)reshuffleGridAnimated:(BOOL)animated;
 - (void)finishPuzzle;
 - (void)menuPopperViewMoved:(id)sender withEvent:(UIEvent *)event;
 - (void)setShareImageWithView:(UIView *)view;
@@ -93,7 +93,7 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     {
         NSNumber *numHorCellsObject = [_level.difficultyLevel objectForKey:BMDifficultyLevelCellHorizontalKey];
         NSNumber *numVerCellsObject = [_level.difficultyLevel objectForKey:BMDifficultyLevelCellVerticalKey];
-        _numberOfCells = MIN([numHorCellsObject integerValue], [numVerCellsObject integerValue]);
+        _numberOfRows = MIN([numHorCellsObject integerValue], [numVerCellsObject integerValue]);
     }
     
     self.croppedImages = [[NSMutableArray alloc] init];
@@ -102,7 +102,7 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     [self.collectionView registerNib:[UINib nibWithNibName:NSStringFromClass([BMPuzzleCollectionViewCell class]) bundle:nil] forCellWithReuseIdentifier:BMPuzzleViewControllerCellIdentifier];
     
     BMPuzzleCollectionViewLayout *layout = (BMPuzzleCollectionViewLayout *)self.collectionView.collectionViewLayout;
-    layout.numberOfCells = _numberOfCells;
+    layout.numberOfRows = _numberOfRows;
     self.collectionView.collectionViewLayout = layout;
     
 
@@ -127,6 +127,9 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     [_menuPopperView addTarget:self action:@selector(menuPopperViewMoved:withEvent:) forControlEvents:UIControlEventTouchDragInside];
     [self.collectionView addSubview:_menuPopperView];
     
+    
+    // Shuffle the grid
+    [self performSelector:@selector(reshuffleGridAnimated:) withObject:nil afterDelay:1];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -207,12 +210,12 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
 - (void)createCroppedImages {
     NSInteger totalTiles = 0;
     NSInteger verticalRow = 0;
-    while (verticalRow < _numberOfCells) {
+    while (verticalRow < _numberOfRows) {
         NSInteger horizontalRow = 0;
-        while (horizontalRow < _numberOfCells) {
+        while (horizontalRow < _numberOfRows) {
             
-            CGFloat width = _puzzleImage.size.width / _numberOfCells;
-            CGFloat height = _puzzleImage.size.height / _numberOfCells;
+            CGFloat width = _puzzleImage.size.width / _numberOfRows;
+            CGFloat height = _puzzleImage.size.height / _numberOfRows;
             
             CGRect imageRect = CGRectMake(width * horizontalRow, height * verticalRow, width, height);
             _croppedImages[totalTiles] = [self croppedImage:_puzzleImage cropRect:imageRect];
@@ -224,10 +227,10 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     }
 }
 
-- (void)reshuffleGridAnimated:(id)animated
-{
-    [_croppedImages shuffle];
-    _correctPatternFound = NO;
+- (void)reshuffleGridAnimated:(BOOL)animated {
+    [(BMPuzzleCollectionViewLayout *)self.collectionView.collectionViewLayout shuffleCollectionViewCellsWithCompletion:^{
+        
+    }];
 }
 
 
@@ -287,7 +290,7 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
 #pragma mark
 #pragma mark BMPopUpMenuDelegate
 
-- (void)shareButtonDidTap:(BMPopUpMenuView *)popUpMenu {
+- (void)didTapShareButton:(BMPopUpMenuView *)popUpMenu {
     NSString *shareText;
     
     if (_correctPatternFound) {
@@ -320,7 +323,7 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     [self presentViewController:activityViewController animated:YES completion:nil];
 }
 
-- (void)makeNewPuzzleButtonDidTap:(BMPopUpMenuView *)popUpMenu {
+- (void)didTapMakeNewPuzzleButton:(BMPopUpMenuView *)popUpMenu {
     if ([_delegate respondsToSelector:@selector(puzzleViewControllerAttemptedNewPuzzle:)]) {
         _popUpMenuCongratulation.hidden = YES;
         _popUpMenuRegular.hidden = YES;
@@ -329,7 +332,7 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     }
 }
 
-- (void)OKButtonDidTap:(BMPopUpMenuView *)popUpMenu {
+- (void)didTapOKButton:(BMPopUpMenuView *)popUpMenu {
     _popUpMenuCongratulation.hidden = YES;
     _popUpMenuRegular.hidden = YES;
     
@@ -341,7 +344,7 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     }];
 }
 
-- (void)aboutButtonDidTap:(BMPopUpMenuView *)popUpView {
+- (void)didTapAboutButton:(BMPopUpMenuView *)popUpView {
     BMAboutViewController *aboutViewController = [[BMAboutViewController alloc] init];
     aboutViewController.delegate = self;
     aboutViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
@@ -353,7 +356,7 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
 #pragma mark
 #pragma mark BMFloatingMenuPopperViewDelegate
 
-- (void)menuPopperDidTap:(BMFloatingMenuPopperView *)popperView {
+- (void)didTapMenuPopper:(BMFloatingMenuPopperView *)popperView {
     if (_popUpMenuRegular.hidden && _popUpMenuCongratulation.hidden) {
         _popUpMenuRegular.center = _collectionView.center;
         _popUpMenuRegular.hidden = NO;
@@ -375,7 +378,7 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
 #pragma mark
 #pragma mark BMAboutViewControllerDelegate methods
 
-- (void)aboutViewControllerDidTapBackButton:(BMAboutViewController *)aboutViewController {
+- (void)didTapAboutViewControllerBackButton:(BMAboutViewController *)aboutViewController {
     [self dismissViewControllerAnimated:YES completion:nil];
     [self updateUI];
 }
@@ -384,7 +387,7 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
 #pragma mark UICollectionViewDatasource methods
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _numberOfCells * _numberOfCells;
+    return _numberOfRows * _numberOfRows;
 }
 
 

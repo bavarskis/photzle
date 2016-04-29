@@ -11,9 +11,9 @@
 @interface BMPuzzleCollectionViewLayout : UICollectionViewLayout
 
 @property (nonatomic, strong) UIImage *puzzleImage;
-@property (nonatomic, assign) NSUInteger numberOfCells;
+@property (nonatomic, assign) NSUInteger numberOfRows;
 
-
+- (void)shuffleCollectionViewCellsWithCompletion:(void (^)(void))completion;
 
 
 @end

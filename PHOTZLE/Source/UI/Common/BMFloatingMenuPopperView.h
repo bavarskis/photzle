@@ -12,7 +12,7 @@
 
 @protocol BMFloatingMenuPopperViewDelegate <NSObject>
 
-- (void)menuPopperDidTap:(BMFloatingMenuPopperView*)popperView;
+- (void)didTapMenuPopper:(BMFloatingMenuPopperView*)popperView;
 
 @end
 

@@ -165,22 +165,22 @@ NSString *const BMChooseDismissButtonTitle = @"OK";
 
 - (void)sharePuzzle
 {
-    [_delegate shareButtonDidTap:self];
+    [_delegate didTapShareButton:self];
 }
 
 - (void)makeNewPuzzle
 {
-    [_delegate makeNewPuzzleButtonDidTap:self];
+    [_delegate didTapMakeNewPuzzleButton:self];
 }
 
 - (void)dismissPopUpView
 {
-    [_delegate OKButtonDidTap:self];
+    [_delegate didTapOKButton:self];
 }
 
 - (void)showAbout
 {
-    [_delegate aboutButtonDidTap:self];
+    [_delegate didTapAboutButton:self];
 }
 
 

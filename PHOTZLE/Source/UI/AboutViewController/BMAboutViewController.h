@@ -12,7 +12,7 @@
 
 @protocol BMAboutViewControllerDelegate <NSObject>
 
-- (void)aboutViewControllerDidTapBackButton:(BMAboutViewController *)aboutViewController;
+- (void)didTapAboutViewControllerBackButton:(BMAboutViewController *)aboutViewController;
 
 @end
 

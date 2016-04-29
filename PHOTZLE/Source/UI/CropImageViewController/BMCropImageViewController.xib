@@ -25,7 +25,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="215" height="68"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" alwaysBounceVertical="YES" alwaysBounceHorizontal="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gLr-eD-KfW">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLr-eD-KfW">
                     <rect key="frame" x="0.0" y="68" width="215" height="215"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2wp-Tl-TXo">
@@ -33,15 +33,13 @@
                         </imageView>
                     </subviews>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="2wp-Tl-TXo" secondAttribute="trailing" constant="0.5" id="GEo-Kc-pmC"/>
+                        <constraint firstAttribute="trailing" secondItem="2wp-Tl-TXo" secondAttribute="trailing" id="GEo-Kc-pmC"/>
                         <constraint firstAttribute="width" secondItem="gLr-eD-KfW" secondAttribute="height" multiplier="1:1" id="UMz-7Q-55t"/>
-                        <constraint firstItem="2wp-Tl-TXo" firstAttribute="top" secondItem="gLr-eD-KfW" secondAttribute="top" constant="0.5" id="VXI-4W-Mzc"/>
-                        <constraint firstItem="2wp-Tl-TXo" firstAttribute="leading" secondItem="gLr-eD-KfW" secondAttribute="leading" constant="-0.5" id="bIw-yv-8CI"/>
-                        <constraint firstItem="2wp-Tl-TXo" firstAttribute="centerY" secondItem="gLr-eD-KfW" secondAttribute="centerY" id="bdf-aJ-vZu"/>
-                        <constraint firstAttribute="bottom" secondItem="2wp-Tl-TXo" secondAttribute="bottom" constant="-0.5" id="cAg-Ee-VPO"/>
+                        <constraint firstItem="2wp-Tl-TXo" firstAttribute="top" secondItem="gLr-eD-KfW" secondAttribute="top" id="VXI-4W-Mzc"/>
+                        <constraint firstItem="2wp-Tl-TXo" firstAttribute="leading" secondItem="gLr-eD-KfW" secondAttribute="leading" id="bIw-yv-8CI"/>
+                        <constraint firstAttribute="bottom" secondItem="2wp-Tl-TXo" secondAttribute="bottom" id="cAg-Ee-VPO"/>
                         <constraint firstItem="2wp-Tl-TXo" firstAttribute="height" secondItem="gLr-eD-KfW" secondAttribute="height" id="pLP-gb-lc1"/>
                         <constraint firstItem="2wp-Tl-TXo" firstAttribute="width" secondItem="gLr-eD-KfW" secondAttribute="width" id="saq-4C-J9g"/>
-                        <constraint firstItem="2wp-Tl-TXo" firstAttribute="centerX" secondItem="gLr-eD-KfW" secondAttribute="centerX" id="ztf-RJ-8b5"/>
                     </constraints>
                 </scrollView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dtg-0F-WHy">
@@ -66,15 +64,24 @@
                 <constraint firstItem="Koc-Um-AxL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Ru1-fk-uOA"/>
                 <constraint firstItem="gLr-eD-KfW" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="ct3-Pa-f4O"/>
                 <constraint firstAttribute="bottom" secondItem="2bU-sC-tv2" secondAttribute="bottom" constant="20" id="dY8-yO-8v2"/>
+                <constraint firstItem="gLr-eD-KfW" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="eP9-WL-HZx"/>
                 <constraint firstItem="2bU-sC-tv2" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="84" id="fCF-Dr-5FB"/>
+                <constraint firstAttribute="trailing" secondItem="gLr-eD-KfW" secondAttribute="trailing" id="fWi-z5-7vx"/>
                 <constraint firstAttribute="trailing" secondItem="dtg-0F-WHy" secondAttribute="trailing" id="iKr-Mf-tdA"/>
                 <constraint firstItem="dtg-0F-WHy" firstAttribute="top" secondItem="gLr-eD-KfW" secondAttribute="bottom" id="iQx-QK-GEE"/>
                 <constraint firstItem="gLr-eD-KfW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="lkp-hj-q8t"/>
+                <constraint firstItem="gLr-eD-KfW" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="r5M-Zr-NHz"/>
                 <constraint firstAttribute="trailing" secondItem="Koc-Um-AxL" secondAttribute="trailing" id="rOg-Yp-ve5"/>
                 <constraint firstItem="gLr-eD-KfW" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="tgu-FA-hAr"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="75.5" y="93.5"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="ct3-Pa-f4O"/>
+                    <exclude reference="lkp-hj-q8t"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="-60.5" y="62.5"/>
         </view>
     </objects>
 </document>

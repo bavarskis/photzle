@@ -7,10 +7,13 @@
 //
 
 #import "BMCropImageViewController.h"
+#import "UIImage+Resize.h"
 
 @interface BMCropImageViewController () {
     UIImage *_selectedImage;
     UIImage *_croppedImage;
+    BOOL _isImagePortrait;
+    CGSize _imageSize;
     
 }
 @property (weak, nonatomic) IBOutlet UIView *topMaskView;
@@ -18,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *selectButton;
+@property (nonatomic, assign) BOOL viewsDidLayout;;
 
 @end
 
@@ -39,17 +43,51 @@
     _topMaskView.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.5];
     _bottomMaskView.backgroundColor = [UIColor colorWithWhite:0.2 alpha:0.5];
     
+    _imageView.translatesAutoresizingMaskIntoConstraints = YES;
     _imageView.image = _selectedImage;
-    
-    CGRect scrollViewRect = (CGRect)[_scrollView bounds];
-    CGSize imageSize = (CGSize)[_selectedImage size];
-    _imageView.bounds = CGRectMake(0, 0, MAX(scrollViewRect.size.width, imageSize.width), MAX(scrollViewRect.size.height, imageSize.height));
-    _scrollView.contentSize = _selectedImage.size;
-    [self.view layoutIfNeeded];
 }
+
+- (void)viewDidLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    
+    if (!self.viewsDidLayout) {
+        CGRect scrollViewRect = (CGRect)[_scrollView bounds];
+        _imageSize = (CGSize)[_selectedImage size];
+        _isImagePortrait = _imageSize.width <= _imageSize.height;
+        CGFloat aspecRatio = _imageSize.width / _imageSize.height;
+        
+        CGSize imageViewSize;
+        if (_isImagePortrait) {
+            imageViewSize = CGSizeMake(scrollViewRect.size.width, scrollViewRect.size.height / aspecRatio);
+        }
+        else {
+            imageViewSize = CGSizeMake(scrollViewRect.size.width * aspecRatio, scrollViewRect.size.height);
+        }
+        
+        _imageView.frame = CGRectMake(0, 0, imageViewSize.width, imageViewSize.height);
+        _scrollView.contentSize = _imageView.frame.size;
+    }
+    
+    self.viewsDidLayout = YES;
+}
+
 - (IBAction)didTapSaveButton:(id)sender {
+    
+    CGFloat mappedOffset;
+    CGRect cropRect;
+    if (_isImagePortrait) {
+        mappedOffset = (_imageSize.height / _scrollView.contentSize.height) * _scrollView.contentOffset.y;
+        cropRect = CGRectMake(0, mappedOffset, _imageSize.width, _imageSize.width);
+    }
+    else {
+        mappedOffset = (_imageSize.width / _scrollView.contentSize.width) * _scrollView.contentOffset.x;
+        cropRect = CGRectMake(mappedOffset, 0, _imageSize.height, _imageSize.height);
+    }
+    
+    _croppedImage = [_selectedImage croppedImageWithRect:cropRect];
+    
     if ([_delegate respondsToSelector:@selector(cropImageViewController:didCropImage:)]) {
-        [_delegate cropImageViewController:self didCropImage:_selectedImage];
+        [_delegate cropImageViewController:self didCropImage:_croppedImage];
     }
 }
 

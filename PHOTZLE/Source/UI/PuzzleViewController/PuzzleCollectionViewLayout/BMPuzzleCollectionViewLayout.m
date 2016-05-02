@@ -7,13 +7,15 @@
 //
 
 #import "BMPuzzleCollectionViewLayout.h"
+#import "BMPuzzleCollectionViewLayoutAttributes.h"
+#import "NSMutableArray+Shuffling.h"
 
 @interface BMPuzzleCollectionViewLayout() <UIDynamicAnimatorDelegate> {
-    
+    NSMutableDictionary *_originalIndexCoordinateMapping;
+    NSMutableArray *_allCoordinatesArray;
+    NSArray *_attributes;
+    UIDynamicAnimator *_dynamicAnimator;
 }
-
-@property (nonnull, strong) UIDynamicAnimator *dynamicAnimator;
-@property (nonnull, strong) NSArray *attributes;
 
 @end
 
@@ -22,18 +24,32 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    self.dynamicAnimator = [[UIDynamicAnimator alloc] initWithCollectionViewLayout:self];
-    self.dynamicAnimator.delegate = self;
+    _dynamicAnimator = [[UIDynamicAnimator alloc] initWithCollectionViewLayout:self];
+    _dynamicAnimator.delegate = self;
+    [_dynamicAnimator removeAllBehaviors];
+    
+    _originalIndexCoordinateMapping = [NSMutableDictionary dictionary];
+    _allCoordinatesArray = [NSMutableArray array];
+}
+
+#pragma mark -
+#pragma mark Layout
+
++ (Class)layoutAttributesClass {
+    return [BMPuzzleCollectionViewLayoutAttributes class];
 }
 
 - (void)prepareLayout {
     [super prepareLayout];
     
-
 }
 
-- (nullable NSArray<__kindof UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect {
+- (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
     NSMutableArray *attributes = [NSMutableArray array];
+    
+    if (_dynamicAnimator.behaviors.count > 0) {
+        return [_dynamicAnimator itemsInRect:rect];
+    }
     
     CGFloat contentMinSize = MIN(self.collectionViewContentSize.width, self.collectionViewContentSize.height);
     CGFloat contentMaxSize = MAX(self.collectionViewContentSize.width, self.collectionViewContentSize.height);
@@ -46,25 +62,31 @@
             CGRect cellRect = CGRectMake(contentMinSize / _numberOfRows * j + offsetX, contentMinSize / _numberOfRows * i + offsetY, contentMinSize / _numberOfRows, contentMinSize / _numberOfRows);
             
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:cellNum inSection:0];
-            UICollectionViewLayoutAttributes *cellAttributes = [self layoutAttributesForItemAtIndexPath:indexPath];
+            BMPuzzleCollectionViewLayoutAttributes *cellAttributes = (BMPuzzleCollectionViewLayoutAttributes *)[self layoutAttributesForItemAtIndexPath:indexPath];
             cellAttributes.frame = cellRect;
+            cellAttributes.tileIndex = cellNum;
+            _originalIndexCoordinateMapping[@(cellNum)] = [NSValue valueWithCGPoint:cellAttributes.center];
+            _allCoordinatesArray[cellNum] = [NSValue valueWithCGPoint:cellAttributes.center];
             [attributes addObject:cellAttributes];
             
             cellNum++;
         }
     }
 
-    self.attributes = attributes;
+    _attributes = attributes;
     return attributes;
 }
 
 
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBound {
-    return self.collectionView.bounds.size.width != newBound.size.width;
+    return YES;
 }
                                                          
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
+    if (_dynamicAnimator.behaviors.count > 0) {
+        return (BMPuzzleCollectionViewLayoutAttributes *)[_dynamicAnimator layoutAttributesForCellAtIndexPath:indexPath];
+    }
+    BMPuzzleCollectionViewLayoutAttributes *attributes = [BMPuzzleCollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
     return attributes;
 }
 
@@ -73,7 +95,16 @@
 }
 
 - (void)shuffleCollectionViewCellsWithCompletion:(void (^)(void))completion {
-
+    [self invalidateLayout];
+    if (_dynamicAnimator.behaviors.count == 0) {
+        
+        [_allCoordinatesArray shuffle];
+        [_attributes enumerateObjectsUsingBlock:^(UICollectionViewLayoutAttributes *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            UISnapBehavior *snapBehavior = [[UISnapBehavior alloc] initWithItem:obj snapToPoint:[_allCoordinatesArray[idx] CGPointValue]];
+            snapBehavior.damping = 0.9;
+            [_dynamicAnimator addBehavior:snapBehavior];
+        }];
+    }
 }
 
 

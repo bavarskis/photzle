@@ -30,6 +30,7 @@
 		CE1759011C47A6C5006CFBD9 /* NSMutableArray+Shuffling.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758FC1C47A6C5006CFBD9 /* NSMutableArray+Shuffling.m */; };
 		CE1759021C47A6C5006CFBD9 /* UIFont+defaultFonts.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1758FE1C47A6C5006CFBD9 /* UIFont+defaultFonts.m */; };
 		CE1759031C47A6C5006CFBD9 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = CE1759001C47A6C5006CFBD9 /* UIImage+Resize.m */; };
+		CEA1E2CE1CD780270040E763 /* BMPuzzleCollectionViewLayoutAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = CEA1E2CD1CD780270040E763 /* BMPuzzleCollectionViewLayoutAttributes.m */; };
 		CEABA6B21C47D08200F8FAB7 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEABA6B11C47D08200F8FAB7 /* FBSDKCoreKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,6 +75,8 @@
 		CE1758FE1C47A6C5006CFBD9 /* UIFont+defaultFonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+defaultFonts.m"; sourceTree = "<group>"; };
 		CE1758FF1C47A6C5006CFBD9 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
 		CE1759001C47A6C5006CFBD9 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		CEA1E2CC1CD780270040E763 /* BMPuzzleCollectionViewLayoutAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMPuzzleCollectionViewLayoutAttributes.h; sourceTree = "<group>"; };
+		CEA1E2CD1CD780270040E763 /* BMPuzzleCollectionViewLayoutAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMPuzzleCollectionViewLayoutAttributes.m; sourceTree = "<group>"; };
 		CEABA6B11C47D08200F8FAB7 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +97,8 @@
 			children = (
 				8659E7DE1C48DB70002CD92E /* BMPuzzleCollectionViewLayout.h */,
 				8659E7DF1C48DB70002CD92E /* BMPuzzleCollectionViewLayout.m */,
+				CEA1E2CC1CD780270040E763 /* BMPuzzleCollectionViewLayoutAttributes.h */,
+				CEA1E2CD1CD780270040E763 /* BMPuzzleCollectionViewLayoutAttributes.m */,
 			);
 			name = PuzzleCollectionViewLayout;
 			path = PHOTZLE/Source/UI/PuzzleViewController/PuzzleCollectionViewLayout;
@@ -350,6 +355,7 @@
 				CE1758C31C47A42A006CFBD9 /* main.m in Sources */,
 				CE1758EC1C47A61F006CFBD9 /* BMAboutViewController.m in Sources */,
 				8659E7D01C48DA1B002CD92E /* BMPopUpMenuView.m in Sources */,
+				CEA1E2CE1CD780270040E763 /* BMPuzzleCollectionViewLayoutAttributes.m in Sources */,
 				CE1759031C47A6C5006CFBD9 /* UIImage+Resize.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

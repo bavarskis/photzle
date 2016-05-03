@@ -160,7 +160,7 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
 - (void)didLongPressCollectionView:(UILongPressGestureRecognizer *)sender {
     switch (sender.state) {
         case UIGestureRecognizerStateBegan:
-            NSLog(@"state bagen");
+            NSLog(@"state began");
             break;
         case UIGestureRecognizerStateChanged:
             NSLog(@"state changed");
@@ -400,6 +400,7 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     
     return cell;
 }
+
 
 #pragma mark
 #pragma mark Helpers

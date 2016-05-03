@@ -12,16 +12,15 @@
 @interface BMCropImageViewController () {
     UIImage *_selectedImage;
     UIImage *_croppedImage;
-    BOOL _isImagePortrait;
     CGSize _imageSize;
-    
+    BOOL _isImagePortrait;
 }
 @property (weak, nonatomic) IBOutlet UIView *topMaskView;
 @property (weak, nonatomic) IBOutlet UIView *bottomMaskView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *selectButton;
-@property (nonatomic, assign) BOOL viewsDidLayout;;
+@property (nonatomic, assign) BOOL viewsDidLayout;
 
 @end
 

@@ -13,8 +13,9 @@
 @interface BMPuzzleCollectionViewLayout() <UIDynamicAnimatorDelegate> {
     NSMutableDictionary *_originalIndexCoordinateMapping;
     NSMutableArray *_allCoordinatesArray;
-    NSArray *_attributes;
+    NSArray *_currentAttributes;
     UIDynamicAnimator *_dynamicAnimator;
+    BOOL _didEndShuffleAnimation;
 }
 
 @end
@@ -45,11 +46,21 @@
 }
 
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect {
-    NSMutableArray *attributes = [NSMutableArray array];
-    
+
     if (_dynamicAnimator.behaviors.count > 0) {
+        _currentAttributes = [_dynamicAnimator itemsInRect:rect];
         return [_dynamicAnimator itemsInRect:rect];
     }
+    
+    if (_didEndShuffleAnimation) {
+        return _currentAttributes;
+    }
+
+    return [self inititalAttributesInRect:rect];
+}
+
+- (NSArray *)inititalAttributesInRect:(CGRect)rect {
+    NSMutableArray *attributes = [NSMutableArray array];
     
     CGFloat contentMinSize = MIN(self.collectionViewContentSize.width, self.collectionViewContentSize.height);
     CGFloat contentMaxSize = MAX(self.collectionViewContentSize.width, self.collectionViewContentSize.height);
@@ -72,8 +83,7 @@
             cellNum++;
         }
     }
-
-    _attributes = attributes;
+    _currentAttributes = attributes;
     return attributes;
 }
 
@@ -99,12 +109,20 @@
     if (_dynamicAnimator.behaviors.count == 0) {
         
         [_allCoordinatesArray shuffle];
-        [_attributes enumerateObjectsUsingBlock:^(UICollectionViewLayoutAttributes *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [_currentAttributes enumerateObjectsUsingBlock:^(UICollectionViewLayoutAttributes *obj, NSUInteger idx, BOOL * _Nonnull stop) {
             UISnapBehavior *snapBehavior = [[UISnapBehavior alloc] initWithItem:obj snapToPoint:[_allCoordinatesArray[idx] CGPointValue]];
             snapBehavior.damping = 0.9;
             [_dynamicAnimator addBehavior:snapBehavior];
         }];
     }
+}
+
+#pragma mark -
+#pragma mark Animator delegate
+
+- (void)dynamicAnimatorDidPause:(UIDynamicAnimator *)animator {
+    _didEndShuffleAnimation = YES;
+    [_dynamicAnimator removeAllBehaviors];
 }
 
 

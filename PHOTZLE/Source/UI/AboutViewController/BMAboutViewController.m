@@ -280,7 +280,7 @@ NSString *const BMAboutPhotographyContributionText = @"Original photo by Frédé
 
 - (void)goToBavarskisWeb
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:BMAboutWebBavarskis]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:BMAboutWebBavarskis] options:@{} completionHandler:nil];
 }
 
 
@@ -318,7 +318,7 @@ NSString *const BMAboutPhotographyContributionText = @"Original photo by Frédé
 
 - (void)goToGeritzWeb
 {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:BMAboutWebGeritz]];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:BMAboutWebGeritz] options:@{} completionHandler:nil];
 }
 
 - (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error

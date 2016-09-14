@@ -10,6 +10,9 @@
 
 @interface BMPuzzleCollectionViewLayoutAttributes : UICollectionViewLayoutAttributes
 
-@property (nonatomic, assign) NSInteger tileIndex;
+@property (nonatomic, assign) NSInteger currentIndex;
+@property (nonatomic, assign) BOOL isSelected;
+@property (nonatomic, assign) BOOL isHoveredOn;
+
 
 @end

@@ -20,7 +20,7 @@
 
 NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerCellIdentifier";
 
-@interface BMPuzzleViewController () <UIScrollViewDelegate, BMPopUpMenuViewDelegate, BMFloatingMenuPopperViewDelegate, BMAboutViewControllerDelegate>
+@interface BMPuzzleViewController () <UIScrollViewDelegate, UICollectionViewDelegate, BMPopUpMenuViewDelegate, BMFloatingMenuPopperViewDelegate, BMAboutViewControllerDelegate, BMPuzzleCollectionViewCellDelegate>
 
 @property (nonatomic, strong) UIImage *puzzleImage;
 @property (nonatomic, strong) BMDifficultyLevel *level;
@@ -34,7 +34,6 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
 @property BOOL cellIsSelected;
 @property BOOL correctPatternFound;
 @property NSInteger selectedCell;
-@property UILongPressGestureRecognizer *longPressGestureRecognizer;
 
 @property (nonatomic, strong) NSMutableArray *croppedImages;
 @property (nonatomic, strong) UIImage *shareImage;
@@ -104,11 +103,7 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     BMPuzzleCollectionViewLayout *layout = (BMPuzzleCollectionViewLayout *)self.collectionView.collectionViewLayout;
     layout.numberOfRows = _numberOfRows;
     self.collectionView.collectionViewLayout = layout;
-    
 
-    
-    self.longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(didLongPressCollectionView:)];
-    [self.collectionView addGestureRecognizer:_longPressGestureRecognizer];
     
     self.popUpMenuCongratulation = [[BMPopUpMenuView alloc] initWithFrame:CGRectMake(0, 0, BMPopUpMenuViewWidth, BMPopUpMenuViewHeight) menuType:BMPopUpMenuTypeCongratulation];
     _popUpMenuCongratulation.delegate = self;
@@ -153,30 +148,6 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
 -(UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskAll;
-}
-
-#pragma mark - User Actions
-
-- (void)didLongPressCollectionView:(UILongPressGestureRecognizer *)sender {
-    switch (sender.state) {
-        case UIGestureRecognizerStateBegan:
-            NSLog(@"state began");
-            break;
-        case UIGestureRecognizerStateChanged:
-            NSLog(@"state changed");
-            break;
-        case UIGestureRecognizerStateEnded:
-            NSLog(@"state ended");
-            break;
-        case UIGestureRecognizerStateCancelled:
-            NSLog(@"state cancelled");
-            break;
-        case UIGestureRecognizerStateFailed:
-            NSLog(@"state failed");
-            break;
-        default:
-            break;
-    }
 }
 
 
@@ -393,13 +364,23 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     BMPuzzleCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:BMPuzzleViewControllerCellIdentifier forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor redColor];
+    cell.backgroundColor = [UIColor blackColor];
     cell.layer.borderWidth = 1;
     cell.layer.borderColor = [UIColor whiteColor].CGColor;
     cell.imageView.image = _croppedImages[indexPath.item];
+    cell.index = indexPath.item;
+    cell.delegate = self;
     
     return cell;
 }
+
+#pragma mark
+#pragma mark UICollectionViewDatasource methods
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
 
 
 #pragma mark
@@ -417,6 +398,16 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     
     [view.layer addAnimation:scaleAnimation forKey:@"scaleAnimation"];
     
+}
+
+
+#pragma mark
+#pragma BMPuzzleCollectionViewCellDelegate
+
+- (void)didLongPressCollectionViewCell:(BMPuzzleCollectionViewCell *)cell sender:(UILongPressGestureRecognizer *)sender {
+    [(BMPuzzleCollectionViewLayout *)self.collectionView.collectionViewLayout didLongPressCollectionViewCell:cell inView:self.view sender:sender completion:^{
+        //
+    }];
 }
 
 

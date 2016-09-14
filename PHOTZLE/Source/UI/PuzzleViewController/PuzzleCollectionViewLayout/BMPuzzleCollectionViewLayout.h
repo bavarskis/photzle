@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BMPuzzleViewController.h"
+#import "BMPuzzleCOllectionViewCell.h"
 
 @interface BMPuzzleCollectionViewLayout : UICollectionViewLayout
 
@@ -14,6 +16,7 @@
 @property (nonatomic, assign) NSUInteger numberOfRows;
 
 - (void)shuffleCollectionViewCellsWithCompletion:(void (^)(void))completion;
+- (void)didLongPressCollectionViewCell:(BMPuzzleCollectionViewCell *)cell inView:(UIView *)view sender:(UILongPressGestureRecognizer *)sender completion:(void (^)(void))completion;
 
 
 @end

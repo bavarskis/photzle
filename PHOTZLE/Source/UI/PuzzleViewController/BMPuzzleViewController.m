@@ -244,18 +244,13 @@ NSString *const BMPuzzleViewControllerCellIdentifier = @"BMPuzzleViewControllerC
     
 }
 
-- (void)setShareImageWithView:(UIView *)view
-{
-    @autoreleasepool {
-        
-        UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);
-        [view.layer renderInContext:UIGraphicsGetCurrentContext()];
-        UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-        
-        self.shareImage = img;
-        
-    }
+- (void)setShareImageWithView:(UIView *)view {
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size, view.opaque, 0.0);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    self.shareImage = img;
 }
 
 #pragma mark
